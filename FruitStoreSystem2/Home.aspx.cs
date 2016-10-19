@@ -4,34 +4,42 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using ECS.DAL;
-using MySql.Data.MySqlClient;
 using System.Configuration;
+using System.Data;
+using System.Data.Common;
+using ECS.DAL;
+
 namespace FruitStoreSystem2
 {
     public partial class Home : System.Web.UI.Page
     {
-        MySql.Data.MySqlClient.MySqlConnection conn;
-        string myConnectionString;
         Entities en = new Entities();
         string connect = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
-            string myConnectionString = "server=fruitstore.cloudapp.net;uid=root;" +
-    "pwd=BSDnewgeneration;database=fruitstore;";
-
+           display("select * from customer");
+        }
+        private void display(string query)
+        {
+            DataSet ds = new DataSet();
             try
             {
-                conn = new MySql.Data.MySqlClient.MySqlConnection();
-                conn.ConnectionString = myConnectionString;
-                conn.Open();
+                using (Entities en = new Entities())
+                {
+                    en.Open();
+                    DbCommand cmd = en.CreateCommand(query);
+                    cmd.CommandType = CommandType.Text;
+                    DbDataAdapter da = en.CreateDataAdapter(cmd);
+                    da.Fill(ds);
+                }
+                gdvFruit.DataSource = ds;
+                gdvFruit.DataBind();
             }
             catch (MySql.Data.MySqlClient.MySqlException ex)
             {
-                Console.WriteLine(ex);
+
+                Console.WriteLine(ex.Message);
             }
-            //MySqlConnection con = new MySqlConnection(connect);
-            //con.Open();
         }
     }
 }

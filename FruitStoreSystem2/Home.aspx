@@ -2,5 +2,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <p>Hello World</p>
+    <asp:GridView ID="gdvFruit" runat="server" AutoGenerateColumns="False">
+        <Columns>
+            <asp:BoundField DataField="customerName" HeaderText="Customer Name" />
+        </Columns>
+    </asp:GridView>
 </asp:Content>

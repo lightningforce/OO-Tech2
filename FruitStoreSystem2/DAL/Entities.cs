@@ -35,10 +35,10 @@ namespace ECS.DAL
         #region constructor
         public Entities()
         {
-            _connectionString = ConfigurationManager.ConnectionStrings["con3"].ConnectionString;
+            _connectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
             if (_connectionString == null)
             {
-                _connectionString = "Data Source=192.168.1.210;Initial Catalog=EICS;User ID=dev01;Password=password;";
+                _connectionString = "Server=fruitstore.cloudapp.net;Port=3306;Database=fruitstore;Uid=root;Pwd=BSDnewgeneration;";
                 //_connectionString = "Data Source=localhost\sqlserver2012;Initial Catalog=GSB;User ID=alm_focusconn;Password=alm_focus#c0nn;";
             }
         }
@@ -48,7 +48,8 @@ namespace ECS.DAL
             _connectionString = ConfigurationManager.ConnectionStrings[connectionName].ConnectionString; ;
             if (_connectionString == null)
             {
-                _connectionString = "Data Source=192.168.1.210;Initial Catalog=EICS;User ID=dev01;Password=password;";
+                //_connectionString = "Data Source=192.168.1.210;Initial Catalog=EICS;User ID=dev01;Password=password;";
+                _connectionString = "Server=fruitstore.cloudapp.net;Port=3306;Database=fruitstore;Uid=root;Pwd=BSDnewgeneration;";
                 //_connectionString = "Data Source=localhost\sqlserver2012;Initial Catalog=GSB;User ID=alm_focusconn;Password=alm_focus#c0nn;";
             }
         }

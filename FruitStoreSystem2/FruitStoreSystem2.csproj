@@ -70,6 +70,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Customer.cs" />
     <Compile Include="Fruit.cs" />
     <Compile Include="FruitInStock.cs" />
     <Compile Include="Global.asax.cs">

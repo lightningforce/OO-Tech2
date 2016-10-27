@@ -23,19 +23,11 @@ namespace FruitStoreSystem2
         /// </summary>
         private void displayCustomer()
         {
-            //DataSet ds = new DataSet();
             DataTable dt = new DataTable();
-            string query = "select Firstname,Lastname,Phone,Address from Customer";
+            string query = "select Firstname,Lastname,Phone from Customer";
             try
             {
-                //using (Dac dac = new Dac())
-                //{
-                //    dac.Open();
-                //    DbCommand cmd = dac.CreateCommand(query);
-                //    cmd.CommandType = CommandType.Text;
-                //    DbDataAdapter da = dac.CreateDataAdapter(cmd);
-                //    da.Fill(ds);
-                //}
+                
                 using (DataAccess dac = new DataAccess())
                 {
                     dac.Open(Provider.MSSQL);
@@ -49,35 +41,9 @@ namespace FruitStoreSystem2
             }
             catch (Exception ex)
             {
-
                 Console.WriteLine(ex.Message);
             }
         }
-        /// <summary>
-        /// query from mysql on azure cloud
-        /// </summary>
-        private void display()
-        {
-            DataSet ds = new DataSet();
-            string query = "select firstname,lastname,phone,address from customer";
-            try
-            {
-                using (DataAccess dac = new DataAccess())
-                {
-                    dac.Open(Provider.MSSQL);
-                    DbCommand cmd = dac.CreateCommand(query);
-                    cmd.CommandType = CommandType.Text;
-                    DbDataAdapter da = dac.CreateDataAdapter(cmd);
-                    da.Fill(ds);
-                }
-                gdvFruit.DataSource = ds;
-                gdvFruit.DataBind();
-            }
-            catch (Exception ex)
-            {
-
-                Console.WriteLine(ex.Message);
-            }
-        }
+        
     }
 }

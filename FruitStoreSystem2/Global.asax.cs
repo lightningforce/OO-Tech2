@@ -15,7 +15,7 @@ namespace FruitStoreSystem2
         }
         public void RegisterRoutes(RouteCollection routes)
         {
-            routes.MapPageRoute("SalesRoute","SalesReport/{locale}/{year}","~/sales.aspx");
+            routes.MapPageRoute("Home","Home/{locale}/{year}","~/Home.aspx");
         }
     }
 }

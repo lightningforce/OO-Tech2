@@ -78,7 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Customer.cs" />
-    <Compile Include="DAL\Entities.cs" />
+    <Compile Include="DAL\DataAccess.cs" />
     <Compile Include="Fruit.cs" />
     <Compile Include="FruitInStock.cs" />
     <Compile Include="Global.asax.cs">

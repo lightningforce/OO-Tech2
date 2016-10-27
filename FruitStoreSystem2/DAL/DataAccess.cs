@@ -4,8 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Data.Common;
 using System.Configuration;
-using System.Data.SqlClient;
-using MySql.Data.MySqlClient;
 namespace BSD.DAL
 {
     public enum Provider

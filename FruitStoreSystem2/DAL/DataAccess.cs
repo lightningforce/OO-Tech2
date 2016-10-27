@@ -22,10 +22,10 @@ namespace BSD.DAL
         #region constructor
         public DataAccess()
         {
-            _connectionString = ConfigurationManager.ConnectionStrings["con2"].ConnectionString;
+            _connectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
             if (_connectionString == null)
             {
-                _connectionString = "Data Source=LIGHT;Initial Catalog=FruitStore;User ID=pun;Password=North4327;";
+                _connectionString = "Server=tcp:mdwx697kqg.database.windows.net,1433;Database=fruitstore;User ID=dscanon@mdwx697kqg;Password={your_password_here};Trusted_Connection=False;Encrypt=True;Connection Timeout=30;";
             }
         }
         public DataAccess(string connectionName)
@@ -33,7 +33,7 @@ namespace BSD.DAL
             _connectionString = ConfigurationManager.ConnectionStrings[connectionName].ConnectionString;
             if (_connectionString == null)
             {
-                _connectionString = "Data Source=LIGHT;Initial Catalog=FruitStore;User ID=pun;Password=North4327;";
+                _connectionString = "Server=tcp:mdwx697kqg.database.windows.net,1433;Database=fruitstore;User ID=dscanon@mdwx697kqg;Password={your_password_here};Trusted_Connection=False;Encrypt=True;Connection Timeout=30;";
             }
         }
         public void Dispose()

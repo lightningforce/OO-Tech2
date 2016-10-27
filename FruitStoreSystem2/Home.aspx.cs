@@ -7,7 +7,6 @@ using System.Web.UI.WebControls;
 using System.Configuration;
 using System.Data;
 using System.Data.Common;
-using ECS.DAL;
 using BSD.DAL;
 namespace FruitStoreSystem2
 {
@@ -63,12 +62,12 @@ namespace FruitStoreSystem2
             string query = "select firstname,lastname,phone,address from customer";
             try
             {
-                using (Entities en = new Entities())
+                using (DataAccess dac = new DataAccess())
                 {
-                    en.Open();
-                    DbCommand cmd = en.CreateCommand(query);
+                    dac.Open(Provider.MSSQL);
+                    DbCommand cmd = dac.CreateCommand(query);
                     cmd.CommandType = CommandType.Text;
-                    DbDataAdapter da = en.CreateDataAdapter(cmd);
+                    DbDataAdapter da = dac.CreateDataAdapter(cmd);
                     da.Fill(ds);
                 }
                 gdvFruit.DataSource = ds;

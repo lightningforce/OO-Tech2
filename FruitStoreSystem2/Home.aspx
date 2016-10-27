@@ -4,11 +4,10 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:GridView ID="gdvFruit" runat="server" AutoGenerateColumns="False">
         <Columns>
-            <asp:BoundField DataField="id" HeaderText="ID" />
-            <asp:BoundField DataField="firstName" HeaderText="Firstname" />
-            <asp:BoundField DataField="lastname" HeaderText="Lastname" />
-            <asp:BoundField DataField="phone" HeaderText="Phone" />
-            <asp:BoundField DataField="address" HeaderText="Address" />
+            <asp:BoundField DataField="Firstname" HeaderText="Firstname" />
+            <asp:BoundField DataField="Lastname" HeaderText="Lastname" />
+            <asp:BoundField DataField="Phone" HeaderText="Phone" />
+            <asp:BoundField DataField="Address" HeaderText="Address" />
         </Columns>
     </asp:GridView>
 </asp:Content>

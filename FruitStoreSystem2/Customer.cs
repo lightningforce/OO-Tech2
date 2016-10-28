@@ -8,6 +8,13 @@ namespace FruitStoreSystem2
     public class Customer
     {
         private string name;
+
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+
         private string surname;
         private string phone;
         private string address;

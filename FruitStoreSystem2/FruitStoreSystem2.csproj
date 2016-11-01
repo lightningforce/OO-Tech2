@@ -60,12 +60,15 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="addReservingOrder.aspx" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\fruitstore.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Home.aspx" />
+    <Content Include="scripts\angular.min.js" />
     <Content Include="scripts\bootstrap.min.js" />
     <Content Include="scripts\jquery-3.1.1.js" />
+    <Content Include="scripts\ngfruitstore.js" />
     <Content Include="Site1.Master" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -83,6 +86,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="addReservingOrder.aspx.cs">
+      <DependentUpon>addReservingOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="addReservingOrder.aspx.designer.cs">
+      <DependentUpon>addReservingOrder.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Customer.cs" />
     <Compile Include="DAL\DataAccess.cs" />
     <Compile Include="Fruit.cs" />

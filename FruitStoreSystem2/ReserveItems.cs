@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-
+using System.Data;
 namespace FruitStoreSystem2
 {
     public class ReserveItems
@@ -11,6 +11,8 @@ namespace FruitStoreSystem2
         private string gradeRequiremment;
         private string status;
         private Fruit fruit;
+        private string reserveID;
+        public string ReserveID { get; set; }
         public ReserveItems(int n,string g,string s,Fruit f)
         {
             this.numberOfItem = n;
@@ -18,6 +20,12 @@ namespace FruitStoreSystem2
             this.status = s;
             this.fruit = f;
             
+        }
+        public DataTable getReserveItem()
+        {
+            ReserveItemDataService ri = new ReserveItemDataService();
+            DataTable dt = ri.getReserveItemData(ReserveID);
+            return dt;
         }
     }
 }

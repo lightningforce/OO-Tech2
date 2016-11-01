@@ -64,6 +64,8 @@
     <Content Include="css\fruitstore.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Home.aspx" />
+    <Content Include="image\minus.png" />
+    <Content Include="image\plus.png" />
     <Content Include="scripts\bootstrap.min.js" />
     <Content Include="scripts\jquery-3.1.1.js" />
     <Content Include="Site1.Master" />
@@ -85,6 +87,8 @@
   <ItemGroup>
     <Compile Include="Customer.cs" />
     <Compile Include="DAL\DataAccess.cs" />
+    <Compile Include="DataService\ReserveItemDataService.cs" />
+    <Compile Include="DataService\ReserveOrderDataService.cs" />
     <Compile Include="Fruit.cs" />
     <Compile Include="FruitInStock.cs" />
     <Compile Include="Global.asax.cs">

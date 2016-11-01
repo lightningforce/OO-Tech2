@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-
+using System.Data;
+using BSD.DAL;
 namespace FruitStoreSystem2
 {
     public class ReserveOrders
@@ -17,6 +18,12 @@ namespace FruitStoreSystem2
             this.reserveDate = reserveDate;
             this.reserveInterval = reserveInterval;
             this.RItems = new ReserveItems(n,g,status,f);
+        }
+        public DataTable getReserveOrder()
+        {
+            ReserveOrderDataService rs = new ReserveOrderDataService();
+            DataTable dt = rs.getReserveOrderData();
+            return dt;
         }
     }
 }

@@ -4,46 +4,33 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Configuration;
-using System.Data;
-using System.Data.Common;
-using BSD.DAL;
 namespace FruitStoreSystem2
 {
     public partial class Home : System.Web.UI.Page
     {
-        //string connect = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
-            displayCustomer();
-            //display();
+            if (!IsPostBack)
+            {
+                ReserveOrders ro = new ReserveOrders(DateTime.Now, DateTime.Now, 0, string.Empty, string.Empty, null);
+                gvReserveOrder.DataSource = ro.getReserveOrder();
+                gvReserveOrder.DataBind();
+            }
         }
-        /// <summary>
-        /// query from local mssql server
-        /// </summary>
-        private void displayCustomer()
+      
+
+        protected void gvReserveOrder_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            DataTable dt = new DataTable();
-            string query = "select Firstname,Lastname,Phone from Customer";
-            try
+            if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                
-                using (DataAccess dac = new DataAccess())
-                {
-                    dac.Open(Provider.MSSQL);
-                    DbCommand cmd = dac.CreateCommand(query);
-                    cmd.CommandType = CommandType.Text;
-                    DbDataAdapter da = dac.CreateDataAdapter(cmd);
-                    da.Fill(dt);
-                }
-                gdvFruit.DataSource = dt;
-                gdvFruit.DataBind();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
+
+                string reserveID = gvReserveOrder.DataKeys[e.Row.RowIndex].Value.ToString();
+                ReserveItems ri = new ReserveItems(0, string.Empty, string.Empty, null);
+                GridView gvReserveItem = e.Row.FindControl("gvReserveItem") as GridView;
+                ri.ReserveID = reserveID;
+                gvReserveItem.DataSource = ri.getReserveItem();
+                gvReserveItem.DataBind();
             }
         }
-        
     }
 }

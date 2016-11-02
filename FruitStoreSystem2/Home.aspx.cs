@@ -36,8 +36,8 @@ namespace FruitStoreSystem2
                     DbDataAdapter da = dac.CreateDataAdapter(cmd);
                     da.Fill(dt);
                 }
-                gdvFruit.DataSource = dt;
-                gdvFruit.DataBind();
+                gvFruit.DataSource = dt;
+                gvFruit.DataBind();
             }
             catch (Exception ex)
             {

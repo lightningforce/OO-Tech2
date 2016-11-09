@@ -12,7 +12,21 @@ namespace FruitStoreSystem2
         private DateTime reserveInterval;
         private Fruit f;
         private ReserveItems RItems;
-        
+        private string cusFullName;
+
+        public string CusFullName
+        {
+            get
+            {
+                return cusFullName;
+            }
+
+            set
+            {
+                cusFullName = value;
+            }
+        }
+
         public ReserveOrders(DateTime reserveDate, DateTime reserveInterval, int n, string g, string status, Fruit f)
         {
             this.reserveDate = reserveDate;
@@ -23,6 +37,13 @@ namespace FruitStoreSystem2
         {
             ReserveOrderDataService rs = new ReserveOrderDataService();
             DataTable dt = rs.getReserveOrderData();
+            return dt;
+        }
+        public DataTable serchReserveOrder()
+        {
+            cusFullName = CusFullName;
+            ReserveOrderDataService rs = new ReserveOrderDataService();
+            DataTable dt = rs.searchReserveOrderData(cusFullName);
             return dt;
         }
     }

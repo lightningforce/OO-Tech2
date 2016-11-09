@@ -12,6 +12,7 @@ namespace FruitStoreSystem2
         {
             if (!IsPostBack)
             {
+                txtSearch.Attributes.Add("onKeyPress","doClick('" + btnSearch.ClientID + "',event)");
                 ReserveOrders ro = new ReserveOrders(DateTime.Now, DateTime.Now, 0, string.Empty, string.Empty, null);
                 gvReserveOrder.DataSource = ro.getReserveOrder();
                 gvReserveOrder.DataBind();
@@ -31,6 +32,14 @@ namespace FruitStoreSystem2
                 gvReserveItem.DataSource = ri.getReserveItem();
                 gvReserveItem.DataBind();
             }
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            ReserveOrders ro = new ReserveOrders(DateTime.Now, DateTime.Now, 0, string.Empty, string.Empty, null);
+            ro.CusFullName = txtSearch.Text;
+            gvReserveOrder.DataSource = ro.serchReserveOrder();
+            gvReserveOrder.DataBind();
         }
     }
 }

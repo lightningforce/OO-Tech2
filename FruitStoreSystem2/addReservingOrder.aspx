@@ -7,35 +7,58 @@
             <div class="col-md-12">
                 <div class="col-md-12 line-element">
                     <div class="col-md-12 well">
-                        <span>ชื่อ-นามสกุล ลูกค้า {{aro.test}}</span> <asp:DropDownList ID="DropDownList2" runat="server"></asp:DropDownList>
+                        <div class="col-md-6">
+                            <span>ชื่อ-นามสกุล ลูกค้า </span> <select ng-model="aro.modelCustomer" ng-options="element for element in aro.customer"></select>
+                        </div>
+                        <div class="col-md-6">
+                            Date: <input ng-model="aro.modelDate" type="text" id="datepicker">
+                        </div>
                     </div>
                  </div>
-                <div ng-repeat="order in aro.numberOfOrders">
+                <div class="col-md-12">       
+                        <table class="table table-hover"  ng-hide="!aro.objFruit.order[0]">
+                            <thead>
+                                <tr>                               
+                                    <th>ชนิดผลไม้</th>
+                                    <th>พันธุ์</th>
+                                    <th>เกรด</th>
+                                    <th>จำนวน</th>
+                                </tr>
+                            </thead>
+                            <tbody ng-repeat="ordered in aro.objFruit.order">
+                                <tr>                                  
+                                    <th>{{ordered.type}}</th>
+                                    <th>{{ordered.seed}}</th>
+                                    <th>{{ordered.grade}}</th>
+                                    <th>{{ordered.amount}}</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                <div>     
                     <div class="col-md-12 well">  
                         <div class="col-md-12">
                             <div class="col-md-6">
                              <span>ผลไม้ที่ต้องการจอง</span> 
-                             <!--<asp:DropDownList ID="DropDownList1" runat="server"></asp:DropDownList>-->
-                             <select ng-model="aro.fruitType" ng-options="element for element in aro.type"></select>
+                             <select ng-model="aro.modelType" ng-options="element for element in aro.fruitType"></select>
                             </div>
                             <div class="col-md-6">
-                             <span>พันธุ์</span> <asp:DropDownList ID="DropDownList3" runat="server"></asp:DropDownList>
+                             <span>พันธุ์</span> <select ng-model="aro.modelSeed" ng-options="seed for seed in aro.fruitSeed"></select>
                             </div>
                         </div>
                         <div class="col-md-12 line-element">
                             <div class="col-md-6">
-                                <span>เกรด</span> <asp:DropDownList ID="DropDownList4" runat="server"></asp:DropDownList>
+                                <span>เกรด</span>  <select ng-model="aro.modelGrade" ng-options="element for element in aro.fruitGrade"></select>
                             </div>
                             <div class="col-md-6">
-                              <span>จำนวน</span> <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox> <span>กก.</span>
+                              <span>จำนวน</span> <input type="number" ng-model="aro.modelAmount"></input> <span>กก.</span>
                             </div>
                         </div>
                     </div>
-                </div>
             </div>   
-            <button class="btn btn-success" type="button" ng-click="aro.addMoreOrder()">
+            <button class="btn btn-success" ng-disabled="!aro.modelAmount" type="button" ng-click="aro.addMoreOrder()">
               <span class="glyphicon glyphicon-plus"></span>
             </button>
+            <div ng-hide="aro.modelAmount&&aro.modelDate" class="label label-warning">กรุณากรอกข้อมูลให้ครบถ้วน ก่อนเพิ่มรายการจองผลไม้</div>
             <span>ต้องการจองผลไม้เพิ่ม</span>
             <div class="collapse" id="collapseExample">
               <div class="well">
@@ -48,6 +71,10 @@
                 </div>
               </div>
             </div>
-        </div><!--CLOSE JUMBOTRON-->
+            <div class="col-md-offset-8 col-md-4">
+                <button type="button" class="btn btn-success" ng-click="aro.submitOrder()">ยืนยัน</button>
+                <button type="button" class="btn btn-danger">ยกเลิก</button>
+            </div>
+        </button><!--CLOSE JUMBOTRON-->
     </div>
 </asp:Content>

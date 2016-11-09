@@ -16,6 +16,7 @@ namespace FruitStoreSystem2
         public void RegisterRoutes(RouteCollection routes)
         {
             routes.MapPageRoute("Home","Home","~/Home.aspx");
+            routes.MapPageRoute("receiveOrder", "receiveOrder", "~/receiveOrder.cs");
         }
     }
 }

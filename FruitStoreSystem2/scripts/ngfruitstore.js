@@ -7,10 +7,11 @@
       var oid = 0;
       var listOfOrder = [];
       aro.objFruit = {
-          "customer": "test",
+          "customer": "exampleCustomer",
           "date": "",
           "order": []
       }
+     
       //MOCK MASTER DATA.
       aro.fruit = [{
           type: "Banana",
@@ -61,9 +62,9 @@
 
       this.submitOrder = function () {
           console.log("Yo", aro.objFruit);
-      
-          $http.post('/test', aro.objFruit).success(function (res) {
-              console.log("beam")
+          aro.objFruit = JSON.stringify(aro.objFruit);
+          $http.post('/receieveOrder.aspx', aro.objFruit).success(function (res) {
+              
           });           
       }
 

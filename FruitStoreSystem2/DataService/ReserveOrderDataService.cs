@@ -58,5 +58,36 @@ namespace FruitStoreSystem2
             }
             return dt;
         }
+        public void insertReserveOrderData(string cusFullName, string receiveDate)
+        {
+            using (DataAccess dac = new DataAccess())
+            {
+                dac.Open(Provider.MSSQL);
+                DbCommand cmd = dac.CreateCommand("usp_InsertReserveOrder");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(dac.CreateParameter("@in_cusFullname", cusFullName));
+                cmd.Parameters.Add(dac.CreateParameter("@in_receiveDate", receiveDate));
+                cmd.ExecuteNonQuery();
+            }
+        }
+        public int getMaxReserveIdData()
+        {
+            int id;
+            DataTable dt = new DataTable();
+            StringBuilder strQuery = new StringBuilder();
+            strQuery.Append("select ");
+            strQuery.Append("max(reserveID) as reserveID ");
+            strQuery.Append("from ReserveOrder");
+            using (DataAccess dac = new DataAccess())
+            {
+                dac.Open(Provider.MSSQL);
+                DbCommand cmd = dac.CreateCommand(strQuery.ToString());
+                cmd.CommandType = CommandType.Text;
+                DbDataAdapter da = dac.CreateDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            id = int.Parse(dt.Rows[0]["reserveID"].ToString());
+            return id;
+        }
     }
 }

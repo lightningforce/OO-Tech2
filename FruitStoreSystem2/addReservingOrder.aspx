@@ -113,7 +113,7 @@
             </div>
         </button><!--CLOSE JUMBOTRON-->
         <asp:TextBox ID="TextBox1" runat="server" ng-model="aro.objFruit" ng-hide="aro.objFruit"></asp:TextBox>
-       <!-- <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click"/>-->
+       <%--<asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click"/>--%>
     </div>
          
 </asp:Content>

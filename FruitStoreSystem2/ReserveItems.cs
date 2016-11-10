@@ -27,5 +27,10 @@ namespace FruitStoreSystem2
             DataTable dt = ri.getReserveItemData(ReserveID);
             return dt;
         }
+        public void insertReserveItem(int reserveID, int quantity, string fruitType, string fruitSeed,string grade)
+        {
+            ReserveItemDataService ri = new ReserveItemDataService();
+            ri.insertReserveItemData(reserveID, quantity, fruitType, fruitSeed, grade);
+        }
     }
 }

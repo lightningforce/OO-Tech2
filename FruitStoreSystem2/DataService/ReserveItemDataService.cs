@@ -37,5 +37,20 @@ namespace FruitStoreSystem2
             }
             return dt;
         }
+        public void insertReserveItemData(int reserveID,int quantity,string fruitType,string fruitSeed,string grade)
+        {
+            using (DataAccess dac = new DataAccess())
+            {
+                dac.Open(Provider.MSSQL);
+                DbCommand cmd = dac.CreateCommand("usp_InsertReserveItem");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(dac.CreateParameter("@in_reserveID", reserveID));
+                cmd.Parameters.Add(dac.CreateParameter("@in_quantity", quantity));
+                cmd.Parameters.Add(dac.CreateParameter("@in_fruitType", fruitType));
+                cmd.Parameters.Add(dac.CreateParameter("@in_fruitSeed", fruitSeed));
+                cmd.Parameters.Add(dac.CreateParameter("@in_grade", grade));
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }

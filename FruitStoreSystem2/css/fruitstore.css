@@ -1,4 +1,5 @@
 ﻿body {
+    background-image: url("../image/fruit.jpg");
 }
 
 .search-width {
@@ -16,4 +17,35 @@
 }
 .top {
     top: 5px;
+}
+.jumbotron-inverse {
+     background-color: rgba(0, 0, 0, 0.7);
+}
+
+.well-inverse {
+    background-color: rgba(0, 0, 0, 0.7);
+    border:none;
+}
+
+.f-cloud {
+    color:#ecf0f1;
+}
+
+.f-silver {
+    color:#bdc3c7;
+}
+
+
+.btn-large {
+    width:40%;
+}
+.peter {
+    background-color:dodgerblue;
+}
+
+.emerald {
+    background-color:#2ecc71;
+}
+.navbar {
+    border-radius: unset;
 }

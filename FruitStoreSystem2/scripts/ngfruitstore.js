@@ -64,12 +64,12 @@
           aro.modelAmount = '';
       }
 
-      this.submitOrder = function () {
-          console.log("Yo", aro.objFruit);
-          aro.objFruit = JSON.stringify(aro.objFruit);
-          $http.post('/receieveOrder.aspx', aro.objFruit).success(function (res) {
-              
-          });           
+      this.submitOrder = function () {     
+          aro.objFruit = JSON.stringify(aro.objFruit);          
+      }
+
+      this.cancelOrder = function () {
+          aro.objFruit.order = [];
       }
 
   });

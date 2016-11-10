@@ -69,6 +69,8 @@
     <Content Include="css\fruitstore.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Home.aspx" />
+    <Content Include="image\fruit.jpg" />
+    <Content Include="image\fruit2.jpg" />
     <Content Include="scripts\angular.min.js" />
     <Content Include="image\minus.png" />
     <Content Include="image\plus.png" />

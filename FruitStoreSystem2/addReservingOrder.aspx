@@ -39,18 +39,21 @@
                     <table class="table table-hover">
                                 <thead>
                                     <tr>                               
-                                        <th align="center">ผลไม้ที่ต้องการจอง</th>
-                                        <th align="center">พันธุ์</th>
-                                        <th align="center">เกรด</th>
-                                        <th align="center">จำนวน</th>
+                                        <th>ผลไม้ที่ต้องการจอง</th>
+                                        <th>พันธุ์</th>
+                                        <th>เกรด</th>
+                                        <th>จำนวน</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>                                  
-                                        <td align="center"><select ng-model="aro.modelType" ng-options="element for element in aro.fruitType"></select></td>
-                                        <td align="center"><select ng-model="aro.modelSeed" ng-options="seed for seed in aro.fruitSeed"></select></td>
-                                        <td align="center"><select ng-model="aro.modelGrade" ng-options="element for element in aro.fruitGrade"></select></td>
-                                        <td align="center"><input type="number" ng-model="aro.modelAmount"></input> <span>กก.</span></td>
+                                        <td><select ng-model="aro.modelType" ng-options="element for element in aro.fruitType"></select></td>
+                                        <td><select ng-model="aro.modelSeed" ng-options="seed for seed in aro.fruitSeed"></select></td>
+                                        <td><select ng-model="aro.modelGrade" ng-options="element for element in aro.fruitGrade"></select></td>
+                                        <td><input type="number" ng-model="aro.modelAmount"></input> <span>กก.</span></td>
+                                        <td><button class="btn btn-success" ng-disabled="!aro.modelAmount" type="button" ng-click="aro.addMoreOrder()">
+              <span class="glyphicon glyphicon-plus"></span>
+            </button> เพิ่มผลไม้ในรายการจอง</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -93,11 +96,6 @@
                         </div>
                     </div>-->
             </div>   
-            <button class="btn btn-success" ng-disabled="!aro.modelAmount" type="button" ng-click="aro.addMoreOrder()">
-              <span class="glyphicon glyphicon-plus"></span>
-            </button>
-            <div ng-hide="aro.modelAmount&&aro.modelDate" class="label label-warning">กรุณากรอกข้อมูลให้ครบถ้วน ก่อนเพิ่มรายการจองผลไม้</div>
-            <span>ต้องการจองผลไม้เพิ่ม</span>
             <div class="collapse" id="collapseExample">
               <div class="well">
                 <div class="col-md-12">
@@ -110,7 +108,7 @@
               </div>
             </div>
             <div class="col-md-offset-8 col-md-4">
-                <asp:Button CssClass="btn btn-success" ID="Button2" ng-click="aro.submitOrder()" runat="server" Text="ยืนยัน" OnClick="Button1_Click"/>
+                <asp:Button CssClass="btn btn-success" ID="Button2" ng-disabled="!aro.objFruit.order[0]" ng-click="aro.submitOrder()" runat="server" Text="ยืนยัน" OnClick="Button1_Click"/>
                 <button type="button" class="btn btn-danger">ยกเลิก</button>
             </div>
         </button><!--CLOSE JUMBOTRON-->

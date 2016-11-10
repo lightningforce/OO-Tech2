@@ -1,11 +1,15 @@
 ﻿angular.module('fruitStoreApp', [])
   .controller('AddReservingOrderController', function ($scope, $http) {
 
-      // Use x-www-form-urlencoded Content-Type
-      $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
       var aro = this;    
       var oid = 0;
       var listOfOrder = [];
+      aro.pathname = window.location.pathname;
+      if (aro.pathname === "/addReservingOrder.aspx") {
+          aro.addReservingOrderPage = "active";
+      } else if (aro.pathname === "/Home.aspx") {
+          aro.Home = "active";
+      }
       aro.objFruit = {
           "customer": "exampleCustomer",
           "date": "",

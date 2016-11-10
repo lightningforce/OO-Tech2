@@ -3,6 +3,7 @@
 
 /.vs/config/*.config
 .vs/config/*.config
+.vs/*
 
 # User-specific files
 *.suo

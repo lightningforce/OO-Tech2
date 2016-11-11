@@ -46,11 +46,11 @@ namespace FruitStoreSystem2
             DataTable dt = rs.searchReserveOrderData(cusFullName);
             return dt;
         }
-        public int insertReserveOrder(string cusFullname,string receiveDate)
+        public void insertReserveOrder(string cusFullname,string receiveDate)
         {
             ReserveOrderDataService rs = new ReserveOrderDataService();
-            int id = rs.insertReserveOrderData(cusFullname, receiveDate);
-            return id;
+            rs.insertReserveOrderData(cusFullname, receiveDate);
+            
         }
         public int getMaxReserveID()
         {

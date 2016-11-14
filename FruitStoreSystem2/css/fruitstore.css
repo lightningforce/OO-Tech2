@@ -49,3 +49,7 @@
 .navbar {
     border-radius: unset;
 }
+
+.hidden {
+    display:none;
+}

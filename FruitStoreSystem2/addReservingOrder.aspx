@@ -118,11 +118,12 @@
               </div>
             </div>
             <div class="col-md-offset-8 col-md-4">
-                <asp:Button CssClass="btn btn-success btn-large emerald" ID="Button2" ng-disabled="!aro.objFruit.order[0]" ng-click="aro.submitOrder()" runat="server" Text="ยืนยัน" OnClick="Button1_Click"/>
+                <asp:Button ID="hiddenbtn" CssClass="btn btn-default" OnClick="Button1_Click" runat="server" Text="Button" />
+                <button type="button" class="btn btn-success" ng-disabled="!aro.objFruit.order[0]" ng-click="aro.submitOrder()">ยืนยัน</button>
                 <button type="button" class="btn btn-danger" ng-click="aro.cancelOrder()">ยกเลิก</button>
             </div>
         </button><!--CLOSE JUMBOTRON-->
-        <asp:TextBox ID="TextBox1" runat="server" ng-model="aro.objFruit" ng-hide="aro.objFruit"></asp:TextBox>
+        <asp:TextBox ID="TextBox1" runat="server" ng-model="aro.objFruit"  ng-hide="aro.objFruit"></asp:TextBox>
        <%--<asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click"/>--%>
     </div>
          

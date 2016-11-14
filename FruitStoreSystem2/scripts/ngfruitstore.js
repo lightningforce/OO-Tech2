@@ -1,7 +1,8 @@
 ﻿angular.module('fruitStoreApp', [])
   .controller('AddReservingOrderController', function ($scope, $http) {
 
-      var aro = this;    
+      var aro = this;
+      aro.showModal = false;
       var oid = 0;
       var listOfOrder = [];
       aro.pathname = window.location.pathname;
@@ -15,7 +16,6 @@
           "date": "",
           "order": []
       }
-     
       //MOCK MASTER DATA.
       aro.fruit = [{
           type: "Banana",
@@ -64,8 +64,10 @@
           aro.modelAmount = '';
       }
 
-      this.submitOrder = function () {     
-          aro.objFruit = JSON.stringify(aro.objFruit);          
+      this.submitOrder = function () {   
+          aro.objFruit = JSON.stringify(aro.objFruit);
+          console.log(aro.objFruit);
+          jQuery("#hiddenbtn").click();
       }
 
       this.cancelOrder = function () {

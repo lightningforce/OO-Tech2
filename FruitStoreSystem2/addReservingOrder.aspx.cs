@@ -19,6 +19,7 @@ namespace FruitStoreSystem2
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+            ScriptManager.RegisterStartupScript(this, GetType(), "myFunction", "aro.submitOrder();", true);
             int reserveID;
             var objOrder = TextBox1.Text;
             JObject data = JObject.Parse(objOrder);

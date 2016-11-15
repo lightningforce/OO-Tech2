@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 
@@ -17,7 +18,18 @@ namespace FruitStoreSystem2
             this.seeds = s;
             this.fis = fs;
         }
-
+        public DataTable getFruitType()
+        {
+            FruitDataService fd = new FruitDataService();
+            DataTable dt = fd.getFruitTypeData();
+            return dt;
+        }
+        public DataTable getFruitSeed(string fruitType)
+        {
+            FruitDataService fd = new FruitDataService();
+            DataTable dt  = fd.getFruitSeedData(fruitType);
+            return dt;
+        }
     }
 
     

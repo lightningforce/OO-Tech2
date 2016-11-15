@@ -58,8 +58,9 @@ namespace FruitStoreSystem2
             }
             return dt;
         }
-        public void insertReserveOrderData(string cusFullName, string receiveDate)
+        public int insertReserveOrderData(string cusFullName, string receiveDate)
         {
+            int id;
             using (DataAccess dac = new DataAccess())
             {
                 dac.Open(Provider.MSSQL);
@@ -67,8 +68,11 @@ namespace FruitStoreSystem2
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add(dac.CreateParameter("@in_cusFullname", cusFullName));
                 cmd.Parameters.Add(dac.CreateParameter("@in_receiveDate", receiveDate));
-                cmd.ExecuteNonQuery();
+                id = int.Parse(cmd.ExecuteScalar().ToString());
+                //cmd.ExecuteNonQuery();
+
             }
+            return id;
         }
         public int getMaxReserveIdData()
         {

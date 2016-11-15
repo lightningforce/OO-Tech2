@@ -105,6 +105,8 @@
     </Compile>
     <Compile Include="Customer.cs" />
     <Compile Include="DAL\DataAccess.cs" />
+    <Compile Include="DataService\CustomerDataService.cs" />
+    <Compile Include="DataService\FruitDataService.cs" />
     <Compile Include="DataService\ReserveItemDataService.cs" />
     <Compile Include="DataService\ReserveOrderDataService.cs" />
     <Compile Include="Fruit.cs" />

@@ -27,35 +27,22 @@ namespace FruitStoreSystem2
                 DropDownList3.DataValueField = "fruitType";
                 DropDownList3.DataBind();
             }
-            
+
         }
 
         public DataTable GetFruit()
         {
             DataTable dt = new DataTable();
-            using (DataAccess da = new DataAccess())
-            {
-                da.Open(Provider.MSSQL);
-                string query = "Select distinct fruitType from Fruit";
-                DbCommand dbc = da.CreateCommand(query);
-                DbDataAdapter dta = da.CreateDataAdapter(dbc);
-                dta.Fill(dt);
-            } 
+            Fruit f = new Fruit(string.Empty, string.Empty, null);
+            dt = f.getFruitType();
             return dt;
         }
 
         public DataTable GetSeed(string type)
         {
             DataTable dt = new DataTable();
-            using (DataAccess da = new DataAccess())
-            {
-                da.Open(Provider.MSSQL);
-                string query = "Select distinct fruitSeed from Fruit where fruitType = @type";
-                DbCommand dbc = da.CreateCommand(query);
-                dbc.Parameters.Add(da.CreateParameter("@type", type));
-                DbDataAdapter dta = da.CreateDataAdapter(dbc);
-                dta.Fill(dt);
-            }
+            Fruit f = new Fruit(string.Empty, string.Empty, null);
+            dt = f.getFruitSeed(type);
             return dt;
         }
 
@@ -93,6 +80,19 @@ namespace FruitStoreSystem2
             DropDownList4.DataTextField = "fruitSeed";
             DropDownList4.DataValueField = "fruitSeed";
             DropDownList4.DataBind();
+        }
+
+        protected void InputConfirmButton_Click(object sender, EventArgs e)
+        {
+            string fruitType = DropDownList1.SelectedValue;
+            string fruitSeed = DropDownList2.SelectedValue;
+            int amount = int.Parse(TextBox1.Text);
+            Insert(fruitType,fruitSeed,amount);
+        }
+        private void Insert(string fruitType,string fruitSeed,int amount)
+        {
+            Fruit f = new Fruit(string.Empty, string.Empty, null);
+            f.insertFruit(fruitType,fruitSeed,amount);
         }
     }
 }

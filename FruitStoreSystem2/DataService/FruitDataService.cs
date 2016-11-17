@@ -36,5 +36,18 @@ namespace FruitStoreSystem2
             }
             return dt;
         }
+        public void insertFruitData(string fruitType,string fruitSeed,int amount)
+        {
+            using (DataAccess dac = new DataAccess())
+            {
+                dac.Open(Provider.MSSQL);
+                DbCommand cmd = dac.CreateCommand("usp_InsertFruit");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(dac.CreateParameter("@in_fruitType",fruitType));
+                cmd.Parameters.Add(dac.CreateParameter("@in_fruitSeed", fruitSeed));
+                cmd.Parameters.Add(dac.CreateParameter("@in_amount", amount));
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }

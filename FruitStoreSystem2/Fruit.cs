@@ -30,6 +30,11 @@ namespace FruitStoreSystem2
             DataTable dt  = fd.getFruitSeedData(fruitType);
             return dt;
         }
+        public void insertFruit(string fruitType, string fruitSeed, int amount)
+        {
+            FruitDataService fd = new FruitDataService();
+            fd.insertFruitData(fruitType,fruitSeed,amount);
+        }
     }
 
     

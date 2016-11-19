@@ -15,7 +15,13 @@
           "customer": "exampleCustomer",
           "date": "",
           "order": []
-      }
+      };
+
+      aro.showObjFruit = aro.objFruit;
+
+      console.log("A-1",aro.showObjFruit);
+      aro.objFruit = JSON.stringify(aro.objFruit);
+      console.log(aro.objFruit);
       //MOCK MASTER DATA.
       aro.fruit = [{
           type: "Banana",
@@ -37,11 +43,12 @@
       aro.modelSeed = aro.fruit[0].seeds[0];
       aro.modelGrade = aro.fruitGrade[0];
       aro.modelAmount;
-      console.log(aro.modelType);
-      console.log(aro.fruitSeed);
 
       this.addMoreOrder = function () {
           //THIS FUNCTION ADDED MORE ORDER.
+
+          aro.objFruit = JSON.parse(aro.objFruit);
+          console.log("DEBUG01",aro.objFruit);
           aro.modelDate = $('#datepicker').datepicker({ dateFormat: 'mm-dd-yy' }).val();
           oid = oid + 1;
           aro.objOrder = {
@@ -50,11 +57,16 @@
               grade: aro.modelGrade,
               amount:aro.modelAmount
           }
-          console.log(aro.objOrder)
           aro.objFruit.customer = aro.modelCustomer;
           aro.objFruit.date = aro.modelDate;
           aro.objFruit.order.push(aro.objOrder);
+
+          aro.showObjFruit = aro.objFruit;
           aro.clearModel();
+
+          aro.objFruit = JSON.stringify(aro.objFruit);
+          console.log("DEBUG02", aro.objFruit);
+          console.log("DEBUG03", aro.showObjFruit);
       }
 
       this.clearModel = function () {

@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-md-offset-3">
-                    <table class="table f-cloud" ng-hide="!aro.objFruit.order[0]">
+                    <table class="table f-cloud" ng-hide="!aro.showObjFruit.order[0]">
                         <thead>
                             <tr>
                                 <th>ผลไม้ที่ต้องการจอง</th>
@@ -27,7 +27,7 @@
                                 <th>จำนวน</th>
                             </tr>
                         </thead>
-                        <tbody ng-repeat="ordered in aro.objFruit.order">
+                        <tbody ng-repeat="ordered in aro.showObjFruit.order">
                             <tr class="table-info f-silver">
                                 <td>{{ordered.type}}</td>
                                 <td>{{ordered.seed}}</td>
@@ -118,8 +118,8 @@
               </div>
             </div>
             <div class="col-md-offset-8 col-md-4">
-                <asp:Button ID="hiddenbtn" CssClass="btn btn-default" OnClick="Button1_Click" runat="server" Text="Button" />
-                <button type="button" class="btn btn-success" ng-disabled="!aro.objFruit.order[0]" ng-click="aro.submitOrder()">ยืนยัน</button>
+                <asp:Button ID="hiddenbtn" CssClass="btn btn-success" OnClick="Button1_Click" runat="server" Text="ยืนยัน" />
+                <!--<button type="button" class="btn btn-success" ng-disabled="!aro.objFruit.order[0]" ng-click="aro.submitOrder()">ยืนยัน</button>-->
                 <button type="button" class="btn btn-danger" ng-click="aro.cancelOrder()">ยกเลิก</button>
             </div>
         </button><!--CLOSE JUMBOTRON-->

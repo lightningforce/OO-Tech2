@@ -71,6 +71,7 @@
     <Content Include="Home.aspx" />
     <Content Include="image\fruit.jpg" />
     <Content Include="image\fruit2.jpg" />
+    <Content Include="sales.aspx" />
     <Content Include="scripts\angular.min.js" />
     <Content Include="image\minus.png" />
     <Content Include="image\plus.png" />
@@ -125,6 +126,13 @@
     <Compile Include="receiveOrder.cs" />
     <Compile Include="ReserveItems.cs" />
     <Compile Include="ReserveOrders.cs" />
+    <Compile Include="sales.aspx.cs">
+      <DependentUpon>sales.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sales.aspx.designer.cs">
+      <DependentUpon>sales.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site1.Master.cs">
       <DependentUpon>Site1.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

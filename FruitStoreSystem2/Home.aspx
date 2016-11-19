@@ -9,6 +9,7 @@
         <div class="col-md-offset-6 col-md-6">
             <%--<form>--%>
             <div class="form-group">
+                <asp:Label ID="Label1" runat="server" Text="รายการจองผลไม้"></asp:Label>
                 <!--<input type="text" class="form-control search-width" placeholder="Search">-->
                 <asp:TextBox ID="txtSearch" CssClass="form-control search-width" runat="server" placeholder="ชื่อลูกค้า"></asp:TextBox>
                 <asp:LinkButton ID="btnSearch" runat="server" OnClick="btnSearch_Click"><span class="glyphicon glyphicon-search"></span></asp:LinkButton>
@@ -16,7 +17,7 @@
             <%--</form>--%>
         </div>
         <div>
-            <asp:GridView ID="gvReserveOrder" runat="server" CssClass="table" AutoGenerateColumns="False" DataKeyNames="reserveID" OnRowDataBound="gvReserveOrder_RowDataBound">
+            <asp:GridView ID="gvReserveOrder" runat="server" CssClass="table" AutoGenerateColumns="False" DataKeyNames="reserveID" PageSize="10" AllowPaging="true" OnRowDataBound="gvReserveOrder_RowDataBound" OnPageIndexChanging="gvReserveOrder_PageIndexChanging">
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate>
@@ -47,7 +48,48 @@
                 </Columns>
             </asp:GridView>
         </div>
-      
+        <div class="col-md-offset-6 col-md-6">
+            <%--<form>--%>
+            <div class="form-group">
+                <asp:Label ID="Label2" runat="server" Text="รายการผลไม้ที่ขายแล้ว"></asp:Label>
+                <!--<input type="text" class="form-control search-width" placeholder="Search">-->
+                <asp:TextBox ID="txtSearchSell" CssClass="form-control search-width" runat="server" placeholder="ชื่อลูกค้า"></asp:TextBox>
+                <asp:LinkButton ID="btnSearchSell" runat="server" OnClick="btnSearchSell_Click"><span class="glyphicon glyphicon-search"></span></asp:LinkButton>
+            </div>
+            <%--</form>--%>
+        </div>
+        <div>
+            <asp:GridView ID="gvSellOrder" runat="server" CssClass="table" AutoGenerateColumns="False" DataKeyNames="reserveID" PageSize="10" AllowPaging="true" OnPageIndexChanging="gvSellOrder_PageIndexChanging" OnRowDataBound="gvSellOrder_RowDataBound">
+                <Columns>
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <%--<asp:ImageButton ID="imgShow" runat="server" OnClick="imgShow_Click" ImageUrl="~/image/plus.png" CommandArgument="Show" />--%>
+                            <img alt="" style="cursor: pointer" src="image/plus.png" />
+                            <asp:Panel ID="pnlSellItem" runat="server" Style="display: none">
+                                <asp:GridView ID="gvSellItem" runat="server" AutoGenerateColumns="false" CssClass="table table-striped table-bordered table-hover">
+                                    <Columns>
+                                        <asp:TemplateField ItemStyle-Width="150px" HeaderText="ลำดับที่">
+                                            <ItemTemplate>
+                                                <%# Container.DataItemIndex + 1 %>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:BoundField ItemStyle-Width="150px" DataField="fruitType" HeaderText="ชนิดผลไม้" />
+                                        <asp:BoundField ItemStyle-Width="150px" DataField="fruitSeed" HeaderText="พันธุ์" />
+                                        <asp:BoundField ItemStyle-Width="150px" DataField="grade" HeaderText="เกรด" />
+                                        <asp:BoundField ItemStyle-Width="150px" DataField="quantity" HeaderText="จำนวน" />
+                                    </Columns>
+                                </asp:GridView>
+                            </asp:Panel>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:BoundField DataField="reserveID" HeaderText="เลขที่การจอง" />
+                    <asp:BoundField DataField="cus_fullname" HeaderText="ชื่อสกุลลูกค้า" />
+                    <asp:BoundField DataField="reserveDate" HeaderText="วันที่จองผลไม้" />
+                    <asp:BoundField DataField="receiveDate" HeaderText="วันที่รับผลไม้" />
+                    <asp:BoundField DataField="status" HeaderText="สถานะ" />
+                </Columns>
+            </asp:GridView>
+        </div>
     </div>
     <script type="text/javascript">
         function doClick(buttonName, e) {

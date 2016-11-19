@@ -46,6 +46,19 @@ namespace FruitStoreSystem2
             DataTable dt = rs.searchReserveOrderData(cusFullName);
             return dt;
         }
+        public DataTable getSaleOrder()
+        {
+            ReserveOrderDataService rs = new ReserveOrderDataService();
+            DataTable dt = rs.getSaleOrderData();
+            return dt;
+        }
+        public DataTable searchSaleOrder()
+        {
+            cusFullName = CusFullName;
+            ReserveOrderDataService rs = new ReserveOrderDataService();
+            DataTable dt = rs.searchSaleOrderData(cusFullName);
+            return dt;
+        }
         public int insertReserveOrder(string cusFullname,string receiveDate)
         {
             ReserveOrderDataService rs = new ReserveOrderDataService();

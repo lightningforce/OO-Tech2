@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <div class="col-md-12 wrapper margintop">
-                    <asp:Button ID="InputConfirmButton" CssClass="btn btn-default" runat="server" Text="ยืนยัน" />
+                    <asp:Button ID="InputConfirmButton" CssClass="btn btn-default" runat="server" Text="ยืนยัน" OnClick="InputConfirmButton_Click" />
                 </div>
             </div>
 

@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="Add Reserving Order" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="addReservingOrder.aspx.cs" Inherits="FruitStoreSystem2.addReservingOrder" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="addReservingOrderContent" ContentPlaceHolderID="Content" runat="server">
@@ -9,7 +10,8 @@
                     <div class="col-md-12 well well-inverse">
                         <div class="col-md-6">
                             <span class="f-silver">ชื่อ-นามสกุล ลูกค้า </span>
-                            <select ng-model="aro.modelCustomer" ng-options="element for element in aro.customer"></select>
+                            <%--<select ng-model="aro.modelCustomer" ng-options="element for element in aro.customer"></select>--%>
+                            <asp:DropDownList ID="ddlCustomer" runat="server"></asp:DropDownList>
                         </div>
                         <div class="col-md-6">
                             <span class="f-silver">Date:</span>
@@ -51,9 +53,20 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    <select ng-model="aro.modelType" ng-options="element for element in aro.fruitType"></select></td>
-                                <td>
-                                    <select ng-model="aro.modelSeed" ng-options="seed for seed in aro.fruitSeed"></select></td>
+                                    <%--<select ng-model="aro.modelType" ng-options="element for element in aro.fruitType"></select></td>--%>
+                                    <asp:ScriptManager ID="ScriptManager1" runat="server">
+                                    </asp:ScriptManager>
+                                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                        <ContentTemplate>
+                                            <asp:DropDownList ID="ddlFruitType" runat="server" OnDataBound="ddlFruitType_DataBound" OnSelectedIndexChanged="ddlFruitType_SelectedIndexChanged"></asp:DropDownList>
+                                        </ContentTemplate>
+                                        <%--<Triggers>
+                                            <asp:AsyncPostBackTrigger ControlID="ddlFruitType" EventName="SelectedIndexChanged"/>
+                                        </Triggers>--%>
+                                    </asp:UpdatePanel>
+                                    <td>
+                                        <%--<select ng-model="aro.modelSeed" ng-options="seed for seed in aro.fruitSeed"></select></td>--%>
+                                        <asp:DropDownList ID="ddlFruitSeed" runat="server"></asp:DropDownList>
                                 <td>
                                     <select ng-model="aro.modelGrade" ng-options="element for element in aro.fruitGrade"></select></td>
                                 <td>
@@ -105,26 +118,24 @@
                             </div>
                         </div>
                     </div>-->
-            </div>   
+            </div>
             <div class="collapse" id="collapseExample">
-              <div class="well">
-                <div class="col-md-12">
-                    <div class="col-md-offset-3">
-                        <div class="col-md-12">
-
+                <div class="well">
+                    <div class="col-md-12">
+                        <div class="col-md-offset-3">
+                            <div class="col-md-12">
+                            </div>
                         </div>
                     </div>
                 </div>
-              </div>
             </div>
             <div class="col-md-offset-8 col-md-4">
                 <asp:Button ID="hiddenbtn" CssClass="btn btn-success" OnClick="Button1_Click" runat="server" Text="ยืนยัน" />
                 <!--<button type="button" class="btn btn-success" ng-disabled="!aro.objFruit.order[0]" ng-click="aro.submitOrder()">ยืนยัน</button>-->
                 <button type="button" class="btn btn-danger" ng-click="aro.cancelOrder()">ยกเลิก</button>
             </div>
-        </button><!--CLOSE JUMBOTRON-->
-        <asp:TextBox ID="TextBox1" runat="server" ng-model="aro.objFruit"  ng-hide="aro.objFruit"></asp:TextBox>
-       <%--<asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click"/>--%>
-    </div>
-         
+            </button><!--CLOSE JUMBOTRON-->
+            <asp:TextBox ID="TextBox1" runat="server" ng-model="aro.objFruit" ng-hide="aro.objFruit"></asp:TextBox>
+            <%--<asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click"/>--%>
+        </div>
 </asp:Content>

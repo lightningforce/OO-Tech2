@@ -11,8 +11,8 @@ namespace FruitStoreSystem2
         private string gradeRequiremment;
         private string status;
         private Fruit fruit;
-        private string reserveID;
-        public string ReserveID { get; set; }
+        //private string reserveID;
+        //public string ReserveID { get; set; }
         public ReserveItems(int n,string g,string s,Fruit f)
         {
             this.numberOfItem = n;
@@ -21,10 +21,10 @@ namespace FruitStoreSystem2
             this.fruit = f;
             
         }
-        public DataTable getReserveItem()
+        public DataTable getReserveItem(string reserveID)
         {
             ReserveItemDataService ri = new ReserveItemDataService();
-            DataTable dt = ri.getReserveItemData(ReserveID);
+            DataTable dt = ri.getReserveItemData(reserveID);
             return dt;
         }
         public void insertReserveItem(int reserveID, int quantity, string fruitType, string fruitSeed,string grade)

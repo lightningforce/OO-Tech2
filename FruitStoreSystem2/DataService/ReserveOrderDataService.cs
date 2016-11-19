@@ -23,6 +23,7 @@ namespace FruitStoreSystem2
             strQuery.Append("from ReserveOrder r ");
             strQuery.Append("inner join Customer c ");
             strQuery.Append("on r.cusID = c.cusID ");
+            strQuery.Append("where r.status = 'reserved' ");
             using (DataAccess dac = new DataAccess())
             {
                 dac.Open(Provider.MSSQL);
@@ -46,7 +47,8 @@ namespace FruitStoreSystem2
             strQuery.Append("from ReserveOrder r ");
             strQuery.Append("inner join Customer c ");
             strQuery.Append("on r.cusID = c.cusID ");
-            strQuery.Append("where c.cusFname + ' ' + c.cusLName like @cusFullName");
+            strQuery.Append("where r.status = 'reserved' ");
+            strQuery.Append("and c.cusFname + ' ' + c.cusLName like @cusFullName");
             using (DataAccess dac = new DataAccess())
             {
                 dac.Open(Provider.MSSQL);
@@ -58,8 +60,59 @@ namespace FruitStoreSystem2
             }
             return dt;
         }
-        public void insertReserveOrderData(string cusFullName, string receiveDate)
+        public DataTable getSaleOrderData()
         {
+            DataTable dt = new DataTable();
+            StringBuilder strQuery = new StringBuilder();
+            strQuery.Append("select ");
+            strQuery.Append("r.reserveID");
+            strQuery.Append(",c.cusFName + ' ' + c.cusLName as cus_fullname");
+            strQuery.Append(",r.reserveDate");
+            strQuery.Append(",r.receiveDate");
+            strQuery.Append(",r.status ");
+            strQuery.Append("from ReserveOrder r ");
+            strQuery.Append("inner join Customer c ");
+            strQuery.Append("on r.cusID = c.cusID ");
+            strQuery.Append("where r.status = 'sold' ");
+            using (DataAccess dac = new DataAccess())
+            {
+                dac.Open(Provider.MSSQL);
+                DbCommand cmd = dac.CreateCommand(strQuery.ToString());
+                cmd.CommandType = CommandType.Text;
+                DbDataAdapter da = dac.CreateDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+        public DataTable searchSaleOrderData(string cusFullName)
+        {
+            DataTable dt = new DataTable();
+            StringBuilder strQuery = new StringBuilder();
+            strQuery.Append("select ");
+            strQuery.Append("r.reserveID");
+            strQuery.Append(",c.cusFName + ' ' + c.cusLName as cus_fullname");
+            strQuery.Append(",r.reserveDate");
+            strQuery.Append(",r.receiveDate");
+            strQuery.Append(",r.status ");
+            strQuery.Append("from ReserveOrder r ");
+            strQuery.Append("inner join Customer c ");
+            strQuery.Append("on r.cusID = c.cusID ");
+            strQuery.Append("where r.status = 'sold' ");
+            strQuery.Append("and c.cusFname + ' ' + c.cusLName like @cusFullName");
+            using (DataAccess dac = new DataAccess())
+            {
+                dac.Open(Provider.MSSQL);
+                DbCommand cmd = dac.CreateCommand(strQuery.ToString());
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.Add(dac.CreateParameter("@cusFullName", "%" + cusFullName + "%"));
+                DbDataAdapter da = dac.CreateDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+        public int insertReserveOrderData(string cusFullName, string receiveDate)
+        {
+            int id;
             using (DataAccess dac = new DataAccess())
             {
                 dac.Open(Provider.MSSQL);
@@ -67,8 +120,11 @@ namespace FruitStoreSystem2
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add(dac.CreateParameter("@in_cusFullname", cusFullName));
                 cmd.Parameters.Add(dac.CreateParameter("@in_receiveDate", receiveDate));
-                cmd.ExecuteNonQuery();
+                id = int.Parse(cmd.ExecuteScalar().ToString());
+                //cmd.ExecuteNonQuery();
+
             }
+            return id;
         }
         public int getMaxReserveIdData()
         {

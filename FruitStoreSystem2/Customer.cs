@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 
@@ -27,6 +28,12 @@ namespace FruitStoreSystem2
             this.phone = p;
             this.address = a;
             this.ROrder = ROrder;
+        }
+        public DataTable getCustomerName()
+        {
+            CustomerDataService cd = new CustomerDataService();
+            DataTable dt = cd.getCustomerNameData();
+            return dt;
         }
     }
 }

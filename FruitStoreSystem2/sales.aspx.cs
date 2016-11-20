@@ -14,8 +14,8 @@ namespace FruitStoreSystem2
             if(!IsPostBack)
             {
                 ReserveItems ri = new ReserveItems(0,string.Empty,string.Empty,null);
-                ri.ReserveID = "1";
-                showSale.DataSource = ri.getReserveItem();
+                //.ReserveID = "1";
+                showSale.DataSource = ri.getReserveItem("1");
                 showSale.DataBind();
             }
         }

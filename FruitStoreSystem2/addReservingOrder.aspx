@@ -53,8 +53,8 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    <%--<select ng-model="aro.modelType" ng-options="element for element in aro.fruitType"></select></td>--%>
-                                    <asp:ScriptManager ID="ScriptManager1" runat="server">
+                                    <select ng-model="aro.modelType" ng-options="element for element in aro.fruitType"></select></td>
+                                    <!--<asp:ScriptManager ID="ScriptManager1" runat="server">
                                     </asp:ScriptManager>
                                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                         <ContentTemplate>
@@ -63,17 +63,17 @@
                                         <%--<Triggers>
                                             <asp:AsyncPostBackTrigger ControlID="ddlFruitType" EventName="SelectedIndexChanged"/>
                                         </Triggers>--%>
-                                    </asp:UpdatePanel>
+                                    </asp:UpdatePanel>-->
                                     <td>
-                                        <%--<select ng-model="aro.modelSeed" ng-options="seed for seed in aro.fruitSeed"></select></td>--%>
-                                        <asp:DropDownList ID="ddlFruitSeed" runat="server"></asp:DropDownList>
+                                        <select ng-model="aro.modelSeed" ng-options="seed for seed in aro.fruitSeed"></select></td>
+                                        <!--<asp:DropDownList ID="ddlFruitSeed" runat="server"></asp:DropDownList>-->
                                 <td>
                                     <select ng-model="aro.modelGrade" ng-options="element for element in aro.fruitGrade"></select></td>
                                 <td>
                                     <input type="number" ng-model="aro.modelAmount"></input>
                                     <span class="f-cloud">กก.</span></td>
                                 <td>
-                                    <button class="btn btn-info peter" ng-disabled="!aro.modelAmount" type="button" ng-click="aro.addMoreOrder()">
+                                    <button class="btn btn-info peter" ng-disabled="!aro.modelAmount||!aro.modelSeed" type="button" ng-click="aro.addMoreOrder()">
                                         <span class="glyphicon glyphicon-plus"></span>
                                     </button>
                                     <span class="f-silver">เพิ่มผลไม้ในรายการจอง</span></td>

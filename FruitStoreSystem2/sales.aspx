@@ -16,7 +16,7 @@
                 </div>
                 <div class="col-md-8">
                     <h4>
-                        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+                        <asp:Label ID="lblRI" runat="server" Text="Label"></asp:Label>
                     </h4>
                 </div>
             </div>
@@ -26,7 +26,7 @@
                 </div>
                 <div class="col-md-8">
                     <h4>
-                        <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+                        <asp:Label ID="lblRD" runat="server" Text="Label"></asp:Label>
                     </h4>
                 </div>
 
@@ -37,7 +37,7 @@
                 </div>
                 <div class="col-md-8">
                     <h4>
-                        <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label></h4>
+                        <asp:Label ID="lblCus" runat="server" Text="Label"></asp:Label></h4>
                 </div>
             </div>
             <div class="col-md-12"></div>
@@ -47,7 +47,7 @@
                 </div>
                 <div class="col-md-8">
                     <h4>
-                        <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label></h4>
+                        <asp:Label ID="lblRecieveDate" runat="server" Text="Label"></asp:Label></h4>
                 </div>
             </div>
 
@@ -73,8 +73,9 @@
             <br>
                 <div class="col-md-12 margintop">
                     <div class ="col-md-offset-4">
-                    <button type="button" class="btn btn-success">ยืนยันการขาย</button>
-                    <button type="button" class="btn btn-danger ">ยกเลิก</button>
+                      <asp:Button ID="Button1" runat="server" Text="ยืนยันการขาย" CssClass="btn btn-success" OnClick="Button1_Click"/>
+                      <asp:Button ID="Button2" runat="server" Text="ยกเลิก" CssClass="btn btn-danger" OnClick="Button2_Click"/>
+                    
                     </div>
                 </div>
             </div>

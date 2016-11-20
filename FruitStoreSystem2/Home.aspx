@@ -1,7 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="FruitStoreSystem2.Home" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="FruitStoreSystem2.Home" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
 
 
@@ -18,7 +19,7 @@
                 <%--</form>--%>
             </div>
             <div>
-                <asp:GridView ID="gvReserveOrder" runat="server" CssClass="table" AutoGenerateColumns="False" DataKeyNames="reserveID" PageSize="10" AllowPaging="true" OnRowDataBound="gvReserveOrder_RowDataBound" OnPageIndexChanging="gvReserveOrder_PageIndexChanging">
+                <asp:GridView ID="gvReserveOrder" runat="server" CssClass="table" AutoGenerateColumns="False" DataKeyNames="reserveID" AllowPaging="True" OnRowDataBound="gvReserveOrder_RowDataBound" OnPageIndexChanging="gvReserveOrder_PageIndexChanging" OnRowCommand="gvReserveOrder_RowCommand">
                     <Columns>
                         <asp:TemplateField>
                             <ItemTemplate>
@@ -46,6 +47,12 @@
                         <asp:BoundField DataField="reserveDate" HeaderText="วันที่จองผลไม้" />
                         <asp:BoundField DataField="receiveDate" HeaderText="วันที่รับผลไม้" />
                         <asp:BoundField DataField="status" HeaderText="สถานะ" />
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <!--<button type="button" id="btnShowPopup" class="btn btn-default" data-toggle="modal" data-target="#myModal">Sell</button>-->
+                                <asp:Button ID="btnSell" runat="server" Text="Sell" CommandName="Sell" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" CssClass="btn btn-default"/>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
             </div>
@@ -95,6 +102,7 @@
             </div>
         </div>
     </div>
+
     <script type="text/javascript">
         function doClick(buttonName, e) {
             //the purpose of this function is to allow the enter key to 

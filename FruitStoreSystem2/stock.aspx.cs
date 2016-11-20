@@ -26,6 +26,13 @@ namespace FruitStoreSystem2
                 DropDownList3.DataTextField = "fruitType";
                 DropDownList3.DataValueField = "fruitType";
                 DropDownList3.DataBind();
+
+                Fruit f = new Fruit(string.Empty, string.Empty, null);
+                showUncatStock.DataSource = f.getUncatTable();
+                showUncatStock.DataBind();
+
+                showGradedStock.DataSource = f.getStockTable();
+                showGradedStock.DataBind();
             }
 
         }
@@ -88,11 +95,32 @@ namespace FruitStoreSystem2
             string fruitSeed = DropDownList2.SelectedValue;
             int amount = int.Parse(TextBox1.Text);
             Insert(fruitType,fruitSeed,amount);
+            Fruit f = new Fruit(string.Empty, string.Empty, null);
+            showUncatStock.DataSource = f.getUncatTable();
+            showUncatStock.DataBind();
         }
         private void Insert(string fruitType,string fruitSeed,int amount)
         {
             Fruit f = new Fruit(string.Empty, string.Empty, null);
             f.insertFruit(fruitType,fruitSeed,amount);
+        }
+
+        protected void SepConfirmButton_Click(object sender, EventArgs e)
+        {
+            string fruitType = DropDownList3.SelectedValue;
+            string fruitSeed = DropDownList4.SelectedValue;
+            int amount_a = int.Parse(TextBox2.Text);
+            int amount_b = int.Parse(TextBox3.Text);
+            int amount_c = int.Parse(TextBox4.Text);
+            UpdateStock(fruitType, fruitSeed, amount_a, amount_b, amount_c);
+            Fruit f = new Fruit(string.Empty, string.Empty, null);
+            showGradedStock.DataSource = f.getStockTable();
+            showGradedStock.DataBind();
+        }
+        private void UpdateStock(string fruitType, string fruitSeed, int amount_a, int amount_b, int amount_c)
+        {
+            Fruit f = new Fruit(string.Empty, string.Empty, null);
+            f.updateFruit(fruitType, fruitSeed, amount_a, amount_b, amount_c);
         }
     }
 }

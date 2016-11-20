@@ -15,7 +15,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-             <nav class="navbar navbar-inverse navbar-default">
+             <nav class="navbar navbar-inverse navbar-default navbar-fixed-top">
                     <div class="container-fluid">
                         <!-- Brand and toggle get grouped for better mobile display -->
                         <div class="navbar-header">
@@ -31,9 +31,9 @@
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav">
-                                <li class="active"><a href="#">รายการจองผลไม้ <span class="sr-only">(current)</span></a></li>
-                                <li><a href="#">เพิ่มรายการจองผลไม้</a></li>
-                                <li><a href="#">รายการผลไม้ที่ขายแล้ว</a></li>
+                                <li><a href="home.aspx">รายการจองผลไม้ <span class="sr-only">(current)</span></a></li>
+                                <li><a href="addReservingOrder.aspx">เพิ่มรายการจองผลไม้</a></li>
+                                <li><a href="stock.aspx">รายการผลไม้ที่ขายแล้ว</a></li>
                             </ul>                                          
                         </div>
                         <!-- /.navbar-collapse -->
@@ -66,6 +66,12 @@
         $("[src*=minus]").live("click", function () {
             $(this).attr("src", "image/plus.png");
             $(this).closest("tr").next().remove();
+        });
+    </script>
+    <script>
+        $(".nav a").on("click", function () {
+            $(".nav").find(".active").removeClass("active");
+            $(this).parent().addClass("active");
         });
     </script>
 </body>

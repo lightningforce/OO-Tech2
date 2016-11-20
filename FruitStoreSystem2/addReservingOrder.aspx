@@ -10,8 +10,8 @@
                     <div class="col-md-12 well well-inverse">
                         <div class="col-md-6">
                             <span class="f-silver">ชื่อ-นามสกุล ลูกค้า </span>
-                            <%--<select ng-model="aro.modelCustomer" ng-options="element for element in aro.customer"></select>--%>
-                            <asp:DropDownList ID="ddlCustomer" runat="server"></asp:DropDownList>
+                            <select ng-model="aro.modelCustomer" ng-options="element for element in aro.customer"></select>
+                            <!--<asp:DropDownList ID="ddlCustomer" runat="server"></asp:DropDownList>-->
                         </div>
                         <div class="col-md-6">
                             <span class="f-silver">Date:</span>

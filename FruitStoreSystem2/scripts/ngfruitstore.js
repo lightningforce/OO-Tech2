@@ -96,8 +96,17 @@
       console.log(aro.objFruit);
 
       //MOCK MASTER DATA.
+      aro.customer = [];
+      $http.get('http://fruitstore.cloudapp.net/index.php/customer').then(data=> {
+          aro.cusList = data.data;
+          console.log(aro.cusList);
+          for (i = 0; i < aro.cusList.length; i++) {
+              var name = aro.cusList[i].cusFName + ' ' + aro.cusList[i].cusLName;
+              aro.customer.push(name);
+          }
+          aro.modelCustomer = aro.customer[0];
+      })
       aro.modelDate;
-      aro.customer = ["Customer1", "Customer2"];
       aro.fruitGrade = ["A", "B", "C"];
       aro.modelCustomer = aro.customer[0];
       $("#datepicker").datepicker().datepicker("setDate", new Date());

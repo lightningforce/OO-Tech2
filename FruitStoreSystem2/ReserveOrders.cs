@@ -62,7 +62,8 @@ namespace FruitStoreSystem2
         public int insertReserveOrder(string cusFullname,string receiveDate)
         {
             ReserveOrderDataService rs = new ReserveOrderDataService();
-            int id = rs.insertReserveOrderData(cusFullname, receiveDate);
+            rs.insertReserveOrderData(cusFullname, receiveDate);
+            int id = rs.getMaxReserveIdData();
             return id;
         }
         public int getMaxReserveID()

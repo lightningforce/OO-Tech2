@@ -89,10 +89,18 @@ namespace FruitStoreSystem2
         {
             if (e.CommandName == "Sell")
             {
+                ReserveData data = new ReserveData();
                 int index = Convert.ToInt32(e.CommandArgument);
                 GridViewRow row = gvReserveOrder.Rows[index];
                 string reserveID = row.Cells[1].Text;
-                Session["reserveID"] = reserveID;
+                string cusFullname = row.Cells[2].Text;
+                string reserveDate = row.Cells[3].Text;
+                string receiveDate = row.Cells[4].Text;
+                data.reserveID = reserveID;
+                data.cusFullname = cusFullname;
+                data.reserveDate = reserveDate;
+                data.receiveDate = receiveDate;
+                Session["DATA"] = data;
                 Server.Transfer("sales.aspx");
             }
         }

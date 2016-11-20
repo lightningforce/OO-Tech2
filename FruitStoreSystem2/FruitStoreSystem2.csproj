@@ -124,6 +124,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="receiveOrder.cs" />
+    <Compile Include="ReserveData.cs" />
     <Compile Include="ReserveItems.cs" />
     <Compile Include="ReserveOrders.cs" />
     <Compile Include="sales.aspx.cs">

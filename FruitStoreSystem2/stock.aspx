@@ -1,14 +1,25 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="stock.aspx.cs" Inherits="FruitStoreSystem2.stock" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script>
+        function isNumberKey(evt) {
+            //getting key code of pressed key
+            var charCode = (evt.which) ? evt.which : event.keyCode;
+            //comparing pressed keycodes
+
+            if (charCode > 31 && (charCode < 48 || charCode > 57) && charCode != 47) {
+                //alert(" You can enter only characters 0 to 9 ");
+                return false;
+            }
+            else return true;
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
 
     <div class="container">
         <div class="row">
-            <div class="col-md-12 well">
-                <label>จำนวนผลไม้ที่ร้านมี</label>
-            </div>
+
 
             <div class="col-md-4 well">
                 <div class="col-md-12">
@@ -35,7 +46,7 @@
                         <p>จำนวน</p>
                     </div>
                     <div class="col-md-7">
-                        <asp:TextBox ID="TextBox1" CssClass="form-control" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextBox1" CssClass="form-control" runat="server" Text="0" onkeypress="return isNumberKey(event)"></asp:TextBox>
                     </div>
                     <div class="col-md-3 top">
                         <p>กก.</p>
@@ -55,7 +66,7 @@
                         <p>ชนิดผลไม้</p>
                     </div>
                     <div class="col-md-4">
-                        <asp:DropDownList ID="DropDownList3" runat="server" OnSelectedIndexChanged="DropDownList3_SelectedIndexChanged" onDataBound="DropDownList3_DataBound" AutoPostBack="true"></asp:DropDownList>
+                        <asp:DropDownList ID="DropDownList3" runat="server" OnSelectedIndexChanged="DropDownList3_SelectedIndexChanged" OnDataBound="DropDownList3_DataBound" AutoPostBack="true"></asp:DropDownList>
                     </div>
                     <div class="col-md-2">
                         <p>พันธุ์</p>
@@ -69,7 +80,7 @@
                         <p align="right">เป็นเกรด A จำนวน</p>
                     </div>
                     <div class="col-md-6">
-                        <asp:TextBox ID="TextBox2" CssClass="form-control" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextBox2" CssClass="form-control" runat="server" Text="0" onkeypress="return isNumberKey(event)"></asp:TextBox>
                     </div>
                     <div class="col-md-1 top">
                         <p>กก.</p>
@@ -80,7 +91,7 @@
                         <p align="right">เป็นเกรด B จำนวน</p>
                     </div>
                     <div class="col-md-6">
-                        <asp:TextBox ID="TextBox3" CssClass="form-control" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextBox3" CssClass="form-control" runat="server" Text="0" onkeypress="return isNumberKey(event)"></asp:TextBox>
                     </div>
                     <div class="col-md-1 top">
                         <p>กก.</p>
@@ -91,18 +102,48 @@
                         <p align="right">เป็นเกรด C จำนวน</p>
                     </div>
                     <div class="col-md-6">
-                        <asp:TextBox ID="TextBox4" CssClass="form-control" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextBox4" CssClass="form-control" runat="server" Text="0" onkeypress="return isNumberKey(event)"></asp:TextBox>
                     </div>
                     <div class="col-md-1 top">
                         <p>กก.</p>
                     </div>
                 </div>
                 <div class="col-md-12 wrapper margintop">
-                    <asp:Button ID="SepConfirmButton" CssClass="btn btn-default" runat="server" Text="ยืนยัน" />
+                    <asp:Button ID="SepConfirmButton" CssClass="btn btn-default" runat="server" Text="ยืนยัน" OnClick="SepConfirmButton_Click" />
                 </div>
 
             </div>
+
+            <div class="col-md-12 well">
+                <div class="col-md-12">
+                    <p align="center">จำนวนผลไม้ที่ร้านมี</p>
+                </div>
+                <div class="col-md-12"></div>
+                <div class="col-md-4">
+                    <p align="center">ยังไม่ได้คัดเกรด</p>
+                    <asp:GridView ID="showUncatStock" CssClass="table table-hover" runat="server" AutoGenerateColumns="false" GridLines="none">
+                        <Columns>
+                            <asp:BoundField DataField="fruitType" HeaderText="ชนิดผลไม้" />
+                            <asp:BoundField DataField="fruitSeed" HeaderText="พันธุ์ผลไม้" />
+                            <asp:BoundField DataField="uncatAmount" HeaderText="จำนวน" />
+                        </Columns>
+                    </asp:GridView>
+                </div>
+                <div class="col-md-7 col-md-offset-1">
+                    <p align="center">คัดเกรดแล้ว</p>
+                    <asp:GridView ID="showGradedStock" runat="server" CssClass="table table-condensed" AutoGenerateColumns="false" GridLines="none">
+                        <Columns>
+                            <asp:BoundField DataField="fruitType" HeaderText="ชนิดผลไม้" />
+                            <asp:BoundField DataField="fruitSeed" HeaderText="พันธุ์ผลไม้" />
+                            <asp:BoundField DataField="grade" HeaderText="เกรด" />
+                            <asp:BoundField DataField="amount" HeaderText="จำนวน" />
+                        </Columns>
+                    </asp:GridView>
+                </div>
+            </div>
+
         </div>
+
 
     </div>
 </asp:Content>

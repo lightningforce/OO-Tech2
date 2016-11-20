@@ -71,5 +71,10 @@ namespace FruitStoreSystem2
             int id = rs.getMaxReserveIdData();
             return id;
         }
+        public void updateSellStatus(string reserveID)
+        {
+            ReserveOrderDataService rs = new ReserveOrderDataService();
+            rs.updateSellStatus(reserveID);
+        }
     }
 }

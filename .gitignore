@@ -4,7 +4,6 @@
 /.vs/config/*.config
 .vs/config/*.config
 .vs/*
-FruitStoreSystem2/Web.config
 
 # User-specific files
 *.suo

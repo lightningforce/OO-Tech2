@@ -16,7 +16,7 @@
                 </div>
                 <div class="col-md-8">
                     <h4>
-                        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+                        <asp:Label ID="lblRI" runat="server" Text="Label"></asp:Label>
                     </h4>
                 </div>
             </div>
@@ -26,7 +26,7 @@
                 </div>
                 <div class="col-md-8">
                     <h4>
-                        <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+                        <asp:Label ID="lblRD" runat="server" Text="Label"></asp:Label>
                     </h4>
                 </div>
 
@@ -37,7 +37,7 @@
                 </div>
                 <div class="col-md-8">
                     <h4>
-                        <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label></h4>
+                        <asp:Label ID="lblCus" runat="server" Text="Label"></asp:Label></h4>
                 </div>
             </div>
             <div class="col-md-12"></div>
@@ -47,32 +47,44 @@
                 </div>
                 <div class="col-md-8">
                     <h4>
-                        <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label></h4>
+                        <asp:Label ID="lblRecieveDate" runat="server" Text="Label"></asp:Label></h4>
                 </div>
             </div>
+
             <div class="col-md-6">
                 <div class="col-md-6">
                     <h4>ตามรายการ</h4>
                 </div>
             </div>
             <div class="col-md-12"></div>
+            
             <div class="col-md-12"></div>
-            <asp:GridView ID="showSale" runat="server" AutoGenerateColumns="false">
+            <div class="col-md-12 padding5per">
+            <asp:GridView ID="showSale" runat="server" AutoGenerateColumns="false" CssClass="table table-striped table-bordered table-hover">
                 <Columns>
-                    <asp:BoundField DataField="fruitType" HeaderText="ชนิดผลไม้" />
+                    <asp:BoundField DataField="fruitType" HeaderText="ชนิดผลไม้"/>
                     <asp:BoundField DataField="fruitSeed" HeaderText="พันธุ์ผลไม้" />
                     <asp:BoundField DataField="grade" HeaderText="เกรด" />
                     <asp:BoundField DataField="quantity" HeaderText="จำนวน" />
                 </Columns>
             </asp:GridView>
-            <div class="col-md-12">
+            </div>
+            <br>
+            <br>
+                <div class="col-md-12 margintop">
+                    <div class ="col-md-offset-4">
+                      <asp:Button ID="Button1" runat="server" Text="ยืนยันการขาย" CssClass="btn btn-success" OnClick="Button1_Click"/>
+                      <asp:Button ID="Button2" runat="server" Text="ยกเลิก" CssClass="btn btn-danger" OnClick="Button2_Click"/>
+                    
+                    </div>
+                </div>
+            </div>
             
-                <div class ="col-md-offset-3 col-md-2">
-                <asp:Button ID="Button1" runat="server" Text="Button" />
-                </div>
-                <div class ="col-md-offset-3 col-md-2">
-                <asp:Button ID="Button2" runat="server" Text="Button" />
-                </div>
-            </div>
-            </div>
+            
+            
+          
+        
+        
+        </div>
+    
 </asp:Content>

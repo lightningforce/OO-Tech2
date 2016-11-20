@@ -145,5 +145,21 @@ namespace FruitStoreSystem2
             id = int.Parse(dt.Rows[0]["reserveID"].ToString());
             return id;
         }
+        public void updateSellStatus(string reserveID)
+        {
+            
+            StringBuilder strQuery = new StringBuilder();
+            strQuery.Append("update ReserveOrder ");
+            strQuery.Append("set status = 'sold' ");
+            strQuery.Append("where reserveID =  @reserveID");
+            using (DataAccess dac = new DataAccess())
+            {
+                dac.Open(Provider.MSSQL);
+                DbCommand cmd = dac.CreateCommand(strQuery.ToString());
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.Add(dac.CreateParameter("@reserveID", reserveID));
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }

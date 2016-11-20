@@ -14,7 +14,7 @@ namespace FruitStoreSystem2
             {
                 txtSearch.Attributes.Add("onKeyPress","doClick('" + btnSearch.ClientID + "',event)");
                 txtSearchSell.Attributes.Add("onKeyPress", "doClick('" + btnSearchSell.ClientID + "',event)");
-                ReserveOrders ro = new ReserveOrders(DateTime.Now, DateTime.Now, 0, string.Empty, string.Empty, null);
+                ReserveOrders ro = new ReserveOrders(DateTime.Now,DateTime.Now,0,string.Empty,string.Empty,null);
                 gvReserveOrder.DataSource = ro.getReserveOrder();
                 gvReserveOrder.DataBind();
                 gvSellOrder.DataSource = ro.getSaleOrder();
@@ -83,6 +83,26 @@ namespace FruitStoreSystem2
             ReserveOrders ro = new ReserveOrders(DateTime.Now, DateTime.Now, 0, string.Empty, string.Empty, null);
             gvSellOrder.DataSource = ro.getSaleOrder();
             gvSellOrder.DataBind();
+        }
+
+        protected void gvReserveOrder_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Sell")
+            {
+                ReserveData data = new ReserveData();
+                int index = Convert.ToInt32(e.CommandArgument);
+                GridViewRow row = gvReserveOrder.Rows[index];
+                string reserveID = row.Cells[1].Text;
+                string cusFullname = row.Cells[2].Text;
+                string reserveDate = row.Cells[3].Text;
+                string receiveDate = row.Cells[4].Text;
+                data.reserveID = reserveID;
+                data.cusFullname = cusFullname;
+                data.reserveDate = reserveDate;
+                data.receiveDate = receiveDate;
+                Session["DATA"] = data;
+                Server.Transfer("sales.aspx");
+            }
         }
     }
 }

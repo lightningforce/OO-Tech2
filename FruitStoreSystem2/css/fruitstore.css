@@ -53,3 +53,13 @@
 .hidden {
     display:none;
 }
+.padding5per {
+    padding-left:5%;
+}
+.width35per {
+    width:35%;
+}
+
+.width100per {
+    width:100%;
+}

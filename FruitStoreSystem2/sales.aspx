@@ -50,29 +50,40 @@
                         <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label></h4>
                 </div>
             </div>
+
             <div class="col-md-6">
                 <div class="col-md-6">
                     <h4>ตามรายการ</h4>
                 </div>
             </div>
             <div class="col-md-12"></div>
+            
             <div class="col-md-12"></div>
-            <asp:GridView ID="showSale" runat="server" AutoGenerateColumns="false">
+            <div class="col-md-12 padding5per">
+            <asp:GridView ID="showSale" runat="server" AutoGenerateColumns="false" CssClass="table table-striped table-bordered table-hover">
                 <Columns>
-                    <asp:BoundField DataField="fruitType" HeaderText="ชนิดผลไม้" />
+                    <asp:BoundField DataField="fruitType" HeaderText="ชนิดผลไม้"/>
                     <asp:BoundField DataField="fruitSeed" HeaderText="พันธุ์ผลไม้" />
                     <asp:BoundField DataField="grade" HeaderText="เกรด" />
                     <asp:BoundField DataField="quantity" HeaderText="จำนวน" />
                 </Columns>
             </asp:GridView>
-            <div class="col-md-12">
+            </div>
+            <br>
+            <br>
+                <div class="col-md-12 margintop">
+                    <div class ="col-md-offset-4">
+                    <button type="button" class="btn btn-success">ยืนยันการขาย</button>
+                    <button type="button" class="btn btn-danger ">ยกเลิก</button>
+                    </div>
+                </div>
+            </div>
             
-                <div class ="col-md-offset-3 col-md-2">
-                <asp:Button ID="Button1" runat="server" Text="Button" />
-                </div>
-                <div class ="col-md-offset-3 col-md-2">
-                <asp:Button ID="Button2" runat="server" Text="Button" />
-                </div>
-            </div>
-            </div>
+            
+            
+          
+        
+        
+        </div>
+    
 </asp:Content>

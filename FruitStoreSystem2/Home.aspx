@@ -44,8 +44,8 @@
                         </asp:TemplateField>
                         <asp:BoundField DataField="reserveID" HeaderText="เลขที่การจอง" />
                         <asp:BoundField DataField="cus_fullname" HeaderText="ชื่อสกุลลูกค้า" />
-                        <asp:BoundField DataField="reserveDate" HeaderText="วันที่จองผลไม้" />
-                        <asp:BoundField DataField="receiveDate" HeaderText="วันที่รับผลไม้" />
+                        <asp:BoundField DataField="reserveDate" HeaderText="วันที่จองผลไม้" DataFormatString="{0:dd/MM/yyyy}"/>
+                        <asp:BoundField DataField="receiveDate" HeaderText="วันที่รับผลไม้" DataFormatString="{0:dd/MM/yyyy}"/>
                         <asp:BoundField DataField="status" HeaderText="สถานะ" />
                         <asp:TemplateField>
                             <ItemTemplate>
@@ -94,8 +94,8 @@
                         </asp:TemplateField>
                         <asp:BoundField DataField="reserveID" HeaderText="เลขที่การจอง" />
                         <asp:BoundField DataField="cus_fullname" HeaderText="ชื่อสกุลลูกค้า" />
-                        <asp:BoundField DataField="reserveDate" HeaderText="วันที่จองผลไม้" />
-                        <asp:BoundField DataField="receiveDate" HeaderText="วันที่รับผลไม้" />
+                        <asp:BoundField DataField="reserveDate" HeaderText="วันที่จองผลไม้" DataFormatString="{0:dd/MM/yyyy}"/>
+                        <asp:BoundField DataField="receiveDate" HeaderText="วันที่ขาย" DataFormatString="{0:dd/MM/yyyy}"/>
                         <asp:BoundField DataField="status" HeaderText="สถานะ" />
                     </Columns>
                 </asp:GridView>

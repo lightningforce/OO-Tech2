@@ -1,6 +1,19 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="stock.aspx.cs" Inherits="FruitStoreSystem2.stock" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script>
+        function isNumberKey(evt) {
+            //getting key code of pressed key
+            var charCode = (evt.which) ? evt.which : event.keyCode;
+            //comparing pressed keycodes
+
+            if (charCode > 31 && (charCode < 48 || charCode > 57) && charCode != 47) {
+                //alert(" You can enter only characters 0 to 9 ");
+                return false;
+            }
+            else return true;
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
 
@@ -33,7 +46,7 @@
                         <p>จำนวน</p>
                     </div>
                     <div class="col-md-7">
-                        <asp:TextBox ID="TextBox1" CssClass="form-control" runat="server" Text="0"></asp:TextBox>
+                        <asp:TextBox ID="TextBox1" CssClass="form-control" runat="server" Text="0" onkeypress="return isNumberKey(event)"></asp:TextBox>
                     </div>
                     <div class="col-md-3 top">
                         <p>กก.</p>
@@ -67,7 +80,7 @@
                         <p align="right">เป็นเกรด A จำนวน</p>
                     </div>
                     <div class="col-md-6">
-                        <asp:TextBox ID="TextBox2" CssClass="form-control" runat="server" Text="0"></asp:TextBox>
+                        <asp:TextBox ID="TextBox2" CssClass="form-control" runat="server" Text="0" onkeypress="return isNumberKey(event)"></asp:TextBox>
                     </div>
                     <div class="col-md-1 top">
                         <p>กก.</p>
@@ -78,7 +91,7 @@
                         <p align="right">เป็นเกรด B จำนวน</p>
                     </div>
                     <div class="col-md-6">
-                        <asp:TextBox ID="TextBox3" CssClass="form-control" runat="server" Text="0"></asp:TextBox>
+                        <asp:TextBox ID="TextBox3" CssClass="form-control" runat="server" Text="0" onkeypress="return isNumberKey(event)"></asp:TextBox>
                     </div>
                     <div class="col-md-1 top">
                         <p>กก.</p>
@@ -89,7 +102,7 @@
                         <p align="right">เป็นเกรด C จำนวน</p>
                     </div>
                     <div class="col-md-6">
-                        <asp:TextBox ID="TextBox4" CssClass="form-control" runat="server" Text="0"></asp:TextBox>
+                        <asp:TextBox ID="TextBox4" CssClass="form-control" runat="server" Text="0" onkeypress="return isNumberKey(event)"></asp:TextBox>
                     </div>
                     <div class="col-md-1 top">
                         <p>กก.</p>

@@ -16,8 +16,8 @@ namespace FruitStoreSystem2
         {
             if (!IsPostBack)
             {
-                setDropDownCustomerData();
-                setDropDownFruitType();
+                //setDropDownCustomerData();
+                //setDropDownFruitType();
             }
         }
 
@@ -39,16 +39,16 @@ namespace FruitStoreSystem2
             //{
             //    Page.ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('กรุณาเลือกชื่อลูกค้าและวันที่รับผลไม้')", true);
             //}
-            //foreach (var order in data["order"])
-            //{
-            //    string type = order["type"].ToString();
-            //    string seed = order["seed"].ToString();
-            //    int amount = int.Parse(order["amount"].ToString());
-            //    string grade = order["grade"].ToString();
-            //    type = "มะม่วง";
-            //    seed = "ฟ้าลั่น";
-            //    insertReserveItem(reserveID, amount, type, seed, grade);
-            //}
+            foreach (var order in data["order"])
+            {
+                string type = order["type"].ToString();
+                string seed = order["seed"].ToString();
+                int amount = int.Parse(order["amount"].ToString());
+                string grade = order["grade"].ToString();
+                //type = "มะม่วง";
+                //seed = "ฟ้าลั่น";
+                insertReserveItem(reserveID, amount, type, seed, grade);
+            }
         }
         private int insertReserveOrder(string customer, string receiveDate)
         {

@@ -21,7 +21,7 @@
         <div class="row">
 
 
-            <div class="col-md-4 well">
+            <div class="col-md-4 well well-inverse2 f-cloud">
                 <div class="col-md-12">
                     <p align="center">รับผลไม้จากสวน</p>
                 </div>
@@ -29,7 +29,7 @@
                     <div class="col-md-2">
                         <p>รับ:</p>
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-md-10 f-black">
                         <asp:DropDownList ID="DropDownList1" runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" OnDataBound="DropDownList1_DataBound" AutoPostBack="true"></asp:DropDownList>
                     </div>
                 </div>
@@ -37,7 +37,7 @@
                     <div class="col-md-2">
                         <p>พันธุ์:</p>
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-md-10 f-black">
                         <asp:DropDownList ID="DropDownList2" runat="server"></asp:DropDownList>
                     </div>
                 </div>
@@ -57,7 +57,7 @@
                 </div>
             </div>
 
-            <div class="col-md-7 well col-md-offset-1">
+            <div class="col-md-7 well col-md-offset-1 well-inverse2 f-cloud">
                 <div class="col-md-12">
                     <p align="center">บันทึกเกรดผลไม้</p>
                 </div>
@@ -65,13 +65,13 @@
                     <div class="col-md-2">
                         <p>ชนิดผลไม้</p>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 f-black">
                         <asp:DropDownList ID="DropDownList3" runat="server" OnSelectedIndexChanged="DropDownList3_SelectedIndexChanged" OnDataBound="DropDownList3_DataBound" AutoPostBack="true"></asp:DropDownList>
                     </div>
                     <div class="col-md-2">
                         <p>พันธุ์</p>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 f-black">
                         <asp:DropDownList ID="DropDownList4" runat="server"></asp:DropDownList>
                     </div>
                 </div>
@@ -114,7 +114,7 @@
 
             </div>
 
-            <div class="col-md-12 well">
+            <div class="col-md-12 well well-inverse2 f-cloud">
                 <div class="col-md-12">
                     <p align="center">จำนวนผลไม้ที่ร้านมี</p>
                 </div>

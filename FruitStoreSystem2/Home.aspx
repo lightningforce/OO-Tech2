@@ -7,14 +7,14 @@
 
 
     <div class="container">
-        <div class="col-md-12 well">
-            <div class="col-md-offset-6 col-md-6">
+        <div class="col-md-12 well well-inverse2 f-cloud">
+            <div class="col-md-offset-5 col-md-7">
                 <%--<form>--%>
-                <div class="form-group">
+                <div class="form-group pull-right">
                     <asp:Label ID="Label1" runat="server" Text="รายการจองผลไม้"></asp:Label>
                     <!--<input type="text" class="form-control search-width" placeholder="Search">-->
                     <asp:TextBox ID="txtSearch" CssClass="form-control search-width" runat="server" placeholder="ชื่อลูกค้า"></asp:TextBox>
-                    <asp:LinkButton ID="btnSearch" runat="server" OnClick="btnSearch_Click"><span class="glyphicon glyphicon-search"></span></asp:LinkButton>
+                    <asp:LinkButton ID="btnSearch" runat="server" OnClick="btnSearch_Click"><button class="btn btn-default glyphicon glyphicon-search top"></button></asp:LinkButton>
                 </div>
                 <%--</form>--%>
             </div>
@@ -26,7 +26,7 @@
                                 <%--<asp:ImageButton ID="imgShow" runat="server" OnClick="imgShow_Click" ImageUrl="~/image/plus.png" CommandArgument="Show" />--%>
                                 <img alt="" style="cursor: pointer" src="image/plus.png" />
                                 <asp:Panel ID="pnlReserveItem" runat="server" Style="display: none">
-                                    <asp:GridView ID="gvReserveItem" runat="server" AutoGenerateColumns="false" CssClass="table table-striped table-bordered table-hover">
+                                    <asp:GridView ID="gvReserveItem" runat="server" AutoGenerateColumns="false" CssClass="table table-striped table-bordered table-hover f-black">
                                         <Columns>
                                             <asp:TemplateField ItemStyle-Width="150px" HeaderText="ลำดับที่">
                                                 <ItemTemplate>
@@ -57,14 +57,14 @@
                 </asp:GridView>
             </div>
         </div>
-        <div class="col-md-12 well">
-            <div class="col-md-offset-6 col-md-6">
+        <div class="col-md-12 well well well-inverse2 f-cloud">
+            <div class="col-md-offset-5 col-md-7">
                 <%--<form>--%>
-                <div class="form-group">
+                <div class="form-group pull-right">
                     <asp:Label ID="Label2" runat="server" Text="รายการผลไม้ที่ขายแล้ว"></asp:Label>
                     <!--<input type="text" class="form-control search-width" placeholder="Search">-->
-                    <asp:TextBox ID="txtSearchSell" CssClass="form-control search-width" runat="server" placeholder="ชื่อลูกค้า"></asp:TextBox>
-                    <asp:LinkButton ID="btnSearchSell" runat="server" OnClick="btnSearchSell_Click"><span class="glyphicon glyphicon-search"></span></asp:LinkButton>
+                    <asp:TextBox ID="txtSearchSell" CssClass="form-control search-width" runat="server" placeholder="รายการผลไม้ที่ขายแล้ว"></asp:TextBox>
+                    <asp:LinkButton ID="btnSearchSell" runat="server" OnClick="btnSearchSell_Click"><button class="btn btn-default glyphicon glyphicon-search top"></button></asp:LinkButton>
                 </div>
                 <%--</form>--%>
             </div>
@@ -76,7 +76,7 @@
                                 <%--<asp:ImageButton ID="imgShow" runat="server" OnClick="imgShow_Click" ImageUrl="~/image/plus.png" CommandArgument="Show" />--%>
                                 <img alt="" style="cursor: pointer" src="image/plus.png" />
                                 <asp:Panel ID="pnlSellItem" runat="server" Style="display: none">
-                                    <asp:GridView ID="gvSellItem" runat="server" AutoGenerateColumns="false" CssClass="table table-striped table-bordered table-hover">
+                                    <asp:GridView ID="gvSellItem" runat="server" AutoGenerateColumns="false" CssClass="table table-striped table-bordered table-hover f-black">
                                         <Columns>
                                             <asp:TemplateField ItemStyle-Width="150px" HeaderText="ลำดับที่">
                                                 <ItemTemplate>

@@ -153,7 +153,10 @@
       }
 
       this.cancelOrder = function () {
+          aro.objFruit = JSON.parse(aro.objFruit);
           aro.objFruit.order = [];
+          aro.showObjFruit = aro.objFruit;
+          aro.objFruit = JSON.stringify(aro.objFruit);
       }
 
   });

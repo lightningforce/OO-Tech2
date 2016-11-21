@@ -3,7 +3,7 @@
 }
 
 .search-width {
-    width:70%;
+    width:50%;
     display:inline;
 }
 .line-element {
@@ -27,6 +27,10 @@
     border:none;
 }
 
+.well-inverse2 {
+    background-color: rgba(0, 0, 0, 0.85);
+    border:none;
+}
 .f-cloud {
     color:#ecf0f1;
 }
@@ -62,4 +66,20 @@
 
 .width100per {
     width:100%;
+}
+
+.black {
+    background-color:#000;
+}
+.f-black {
+    color:#000;
+}
+.footer {
+    margin-bottom:0px;
+    position:relative;
+    font-size:14px;
+    color:#99979c;
+}
+.top {
+    top:-1px;
 }

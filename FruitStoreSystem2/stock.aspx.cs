@@ -97,6 +97,7 @@ namespace FruitStoreSystem2
             if (!TextBox1.Text.Equals(""))
                 amount = int.Parse(TextBox1.Text);
             Insert(fruitType, fruitSeed, amount);
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('บันทึกการรับผลไม้สำเร็จ')", true);
             Fruit f = new Fruit(string.Empty, string.Empty, null);
             showUncatStock.DataSource = f.getUncatTable();
             showUncatStock.DataBind();
@@ -120,7 +121,10 @@ namespace FruitStoreSystem2
             if (!TextBox4.Text.Equals(""))
                 amount_c = int.Parse(TextBox4.Text);
             if (checkAmount(fruitType, fruitSeed, amount_a, amount_b, amount_c))
+            {
                 UpdateStock(fruitType, fruitSeed, amount_a, amount_b, amount_c);
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('บันทึกการคัดแยกสำเร็จ')", true);
+            } 
             else
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('ไม่สามารถบันทึกการคัดแยกได้ เนื่องจากบันทึกค่าผลไม้เกินกว่าที่มีอยู่ใน stock')", true);

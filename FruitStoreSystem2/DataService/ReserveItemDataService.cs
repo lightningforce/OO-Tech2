@@ -52,5 +52,43 @@ namespace FruitStoreSystem2
                 cmd.ExecuteNonQuery();
             }
         }
+        public void updateStockData(string fruitType,string fruitSeed,string grade,int amount)
+        {
+            using (DataAccess dac = new DataAccess())
+            {
+                dac.Open(Provider.MSSQL);
+                DbCommand cmd = dac.CreateCommand("usp_UpdateStock");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(dac.CreateParameter("@in_fruitType", fruitType));
+                cmd.Parameters.Add(dac.CreateParameter("@in_fruitSeed", fruitSeed));
+                cmd.Parameters.Add(dac.CreateParameter("@in_grade", grade));
+                cmd.Parameters.Add(dac.CreateParameter("@in_amount", amount));
+                cmd.ExecuteNonQuery();
+            }
+        }
+        public int getStockAmount(string fruitType, string fruitSeed, string grade)
+        {
+            int amount;
+            StringBuilder strQuery = new StringBuilder();
+            strQuery.Append("select ");
+            strQuery.Append("FruitInStock.amount ");
+            strQuery.Append("from FruitInStock ");
+            strQuery.Append("inner join Fruit ");
+            strQuery.Append("on FruitInStock.fruitID = Fruit.fruitID ");
+            strQuery.Append("where Fruit.fruitType = @fruitType ");
+            strQuery.Append("and Fruit.fruitSeed = @fruitSeed ");
+            strQuery.Append("and FruitInStock.grade = @grade ");
+            using (DataAccess dac = new DataAccess())
+            {
+                dac.Open(Provider.MSSQL);
+                DbCommand cmd = dac.CreateCommand(strQuery.ToString());
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.Add(dac.CreateParameter("@fruitType", fruitType));
+                cmd.Parameters.Add(dac.CreateParameter("@fruitSeed", fruitSeed));
+                cmd.Parameters.Add(dac.CreateParameter("@grade", grade));
+                amount = int.Parse(cmd.ExecuteScalar().ToString());
+            }
+            return amount;
+        }
     }
 }

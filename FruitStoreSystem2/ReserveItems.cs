@@ -42,7 +42,7 @@ namespace FruitStoreSystem2
             bool isPass;
             ReserveItemDataService ri = new ReserveItemDataService();
             int amount = ri.getStockAmount(fruitType,fruitSeed,grade);
-            if (quantity < amount)
+            if (quantity <= amount)
             {
                 isPass = true;
             }

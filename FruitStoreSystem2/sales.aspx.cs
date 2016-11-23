@@ -35,6 +35,7 @@ namespace FruitStoreSystem2
                 else
                 {
                    Button1.Enabled = false;
+                   Page.ClientScript.RegisterStartupScript(this.GetType(),"alert","alert('ผลไม้ใน stock มีไม่พอ')",true);
                 }
             }
         }
@@ -91,6 +92,7 @@ namespace FruitStoreSystem2
             {
                 isPass = true;
             }
+            pass.Clear();
             return isPass;
         }
     }

@@ -28,7 +28,14 @@ namespace FruitStoreSystem2
                 lblRecieveDate.Text = data.receiveDate;
                 showSale.DataSource = ri.getReserveItem(data.reserveID);
                 showSale.DataBind();
-
+                if (checkStock())
+                {
+                    Button1.Enabled = true;
+                }
+                else
+                {
+                   Button1.Enabled = false;
+                }
             }
         }
 
@@ -53,6 +60,38 @@ namespace FruitStoreSystem2
             }
             ro.updateSellStatus(reserveID);
             Response.Redirect("Home.aspx");
+        }
+        private bool checkStock()
+        {
+            bool isPass;
+            List<string> pass = new List<string>();
+            string reserveID = lblRI.Text;
+            ReserveItems ri = new ReserveItems(0, string.Empty, string.Empty, null);
+            DataTable dt = ri.getReserveItem(reserveID);
+            foreach (DataRow item in dt.Rows)
+            {
+                string fruitType = item["fruitType"].ToString();
+                string fruitSeed = item["fruitSeed"].ToString();
+                string grade = item["grade"].ToString();
+                int amount = int.Parse(item["quantity"].ToString());
+                if (ri.checkStock(fruitType, fruitSeed, grade, amount)) //pass
+                {
+                    pass.Add("pass");
+                }
+                else // fail
+                {
+                    pass.Add("fail");
+                }  
+            }
+            if (pass.Contains("fail"))
+            {
+                isPass = false;
+            }
+            else
+            {
+                isPass = true;
+            }
+            return isPass;
         }
     }
 }

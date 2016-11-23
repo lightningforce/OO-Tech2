@@ -37,5 +37,20 @@ namespace FruitStoreSystem2
             ReserveItemDataService ri = new ReserveItemDataService();
             ri.updateStockData(fruitType,fruitSeed,grade,amount);
         }
+        public bool checkStock(string fruitType, string fruitSeed, string grade,int quantity)
+        {
+            bool isPass;
+            ReserveItemDataService ri = new ReserveItemDataService();
+            int amount = ri.getStockAmount(fruitType,fruitSeed,grade);
+            if (quantity < amount)
+            {
+                isPass = true;
+            }
+            else
+            {
+                isPass = false;
+            }
+            return isPass;
+        }
     }
 }

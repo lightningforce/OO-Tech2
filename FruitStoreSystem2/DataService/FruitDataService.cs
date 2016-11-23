@@ -113,5 +113,20 @@ namespace FruitStoreSystem2
             }
             return dt;
         }
+
+        public int getUncatAmount(string fruitType, string fruitSeed)
+        {
+            int uncatAmount = 0;
+            string query = "select amount from FruitUnCat inner join Fruit on Fruit.fruitID = FruitUnCat.FruitID where Fruit.fruitType = @fruitType and Fruit.fruitSeed = @fruitSeed";
+            using (DataAccess dac = new DataAccess())
+            {
+                dac.Open(Provider.MSSQL);
+                DbCommand cmd = dac.CreateCommand(query);
+                cmd.Parameters.Add(dac.CreateParameter("@fruitType", fruitType));
+                cmd.Parameters.Add(dac.CreateParameter("@fruitSeed", fruitSeed));
+                uncatAmount = int.Parse(cmd.ExecuteScalar().ToString());
+            }
+            return uncatAmount;
+        }
     }
 }

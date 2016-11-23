@@ -40,6 +40,15 @@ namespace FruitStoreSystem2
             FruitDataService fd = new FruitDataService();
             fd.updateFruitData(fruitType, fruitSeed, amount_a, amount_b, amount_c);
         }
+        public bool checkUnCatFruit(string fruitType, string fruitSeed, int amount_a, int amount_b, int amount_c)
+        {
+            FruitDataService fd = new FruitDataService();
+            int uncatAmount = fd.getUncatAmount(fruitType, fruitSeed);
+            int balance = amount_a + amount_b + amount_c;
+            if (uncatAmount < balance)
+                return false;
+            else return true;
+        }
 
         public DataTable getUncatTable()
         {
@@ -53,6 +62,8 @@ namespace FruitStoreSystem2
             DataTable dt = fd.getStockTable();
             return dt;
         }
+
+        
     }
 
     

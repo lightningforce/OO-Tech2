@@ -112,15 +112,30 @@ namespace FruitStoreSystem2
             int amount_a = int.Parse(TextBox2.Text);
             int amount_b = int.Parse(TextBox3.Text);
             int amount_c = int.Parse(TextBox4.Text);
-            UpdateStock(fruitType, fruitSeed, amount_a, amount_b, amount_c);
+            if(checkAmount(fruitType, fruitSeed, amount_a, amount_b, amount_c))
+                UpdateStock(fruitType, fruitSeed, amount_a, amount_b, amount_c);
+            else
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('ไม่สามารถบันทึกการคัดแยกได้ เนื่องจากบันทึกค่าผลไม้เกินกว่าที่มีอยู่ใน stock')",true);
+            }
             Fruit f = new Fruit(string.Empty, string.Empty, null);
             showGradedStock.DataSource = f.getStockTable();
+            showUncatStock.DataSource = f.getUncatTable();
             showGradedStock.DataBind();
+            showUncatStock.DataBind();
         }
         private void UpdateStock(string fruitType, string fruitSeed, int amount_a, int amount_b, int amount_c)
         {
             Fruit f = new Fruit(string.Empty, string.Empty, null);
             f.updateFruit(fruitType, fruitSeed, amount_a, amount_b, amount_c);
+        }
+
+        private bool checkAmount(string fruitType, string fruitSeed, int amount_a, int amount_b, int amount_c)
+        {
+            bool check = false;
+            Fruit f = new Fruit(string.Empty, string.Empty, null);
+            check = f.checkUnCatFruit(fruitType, fruitSeed, amount_a, amount_b, amount_c);
+            return check;
         }
     }
 }

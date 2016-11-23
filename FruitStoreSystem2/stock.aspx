@@ -121,7 +121,7 @@
                 <div class="col-md-12"></div>
                 <div class="col-md-4">
                     <p align="center">ยังไม่ได้คัดเกรด</p>
-                    <asp:GridView ID="showUncatStock" CssClass="table table-hover" runat="server" AutoGenerateColumns="false" GridLines="none">
+                    <asp:GridView ID="showUncatStock" CssClass="table table-condensed" runat="server" AutoGenerateColumns="false" GridLines="none">
                         <Columns>
                             <asp:BoundField DataField="fruitType" HeaderText="ชนิดผลไม้" />
                             <asp:BoundField DataField="fruitSeed" HeaderText="พันธุ์ผลไม้" />

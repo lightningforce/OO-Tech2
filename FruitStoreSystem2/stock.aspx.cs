@@ -93,30 +93,37 @@ namespace FruitStoreSystem2
         {
             string fruitType = DropDownList1.SelectedValue;
             string fruitSeed = DropDownList2.SelectedValue;
-            int amount = int.Parse(TextBox1.Text);
-            Insert(fruitType,fruitSeed,amount);
+            int amount = 0;
+            if (!TextBox1.Text.Equals(""))
+                amount = int.Parse(TextBox1.Text);
+            Insert(fruitType, fruitSeed, amount);
             Fruit f = new Fruit(string.Empty, string.Empty, null);
             showUncatStock.DataSource = f.getUncatTable();
             showUncatStock.DataBind();
         }
-        private void Insert(string fruitType,string fruitSeed,int amount)
+        private void Insert(string fruitType, string fruitSeed, int amount)
         {
             Fruit f = new Fruit(string.Empty, string.Empty, null);
-            f.insertFruit(fruitType,fruitSeed,amount);
+            f.insertFruit(fruitType, fruitSeed, amount);
         }
 
         protected void SepConfirmButton_Click(object sender, EventArgs e)
         {
+            int amount_a = 0, amount_b = 0, amount_c = 0;
+
             string fruitType = DropDownList3.SelectedValue;
             string fruitSeed = DropDownList4.SelectedValue;
-            int amount_a = int.Parse(TextBox2.Text);
-            int amount_b = int.Parse(TextBox3.Text);
-            int amount_c = int.Parse(TextBox4.Text);
-            if(checkAmount(fruitType, fruitSeed, amount_a, amount_b, amount_c))
+            if (!TextBox2.Text.Equals(""))
+                amount_a = int.Parse(TextBox2.Text);
+            if (!TextBox3.Text.Equals(""))
+                amount_b = int.Parse(TextBox3.Text);
+            if (!TextBox4.Text.Equals(""))
+                amount_c = int.Parse(TextBox4.Text);
+            if (checkAmount(fruitType, fruitSeed, amount_a, amount_b, amount_c))
                 UpdateStock(fruitType, fruitSeed, amount_a, amount_b, amount_c);
             else
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('ไม่สามารถบันทึกการคัดแยกได้ เนื่องจากบันทึกค่าผลไม้เกินกว่าที่มีอยู่ใน stock')",true);
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('ไม่สามารถบันทึกการคัดแยกได้ เนื่องจากบันทึกค่าผลไม้เกินกว่าที่มีอยู่ใน stock')", true);
             }
             Fruit f = new Fruit(string.Empty, string.Empty, null);
             showGradedStock.DataSource = f.getStockTable();

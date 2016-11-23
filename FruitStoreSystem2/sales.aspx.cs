@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -40,6 +41,16 @@ namespace FruitStoreSystem2
         {
             ReserveOrders ro = new ReserveOrders(DateTime.Now, DateTime.Now, 0, string.Empty, string.Empty, null);
             string reserveID = lblRI.Text;
+            ReserveItems ri = new ReserveItems(0, string.Empty, string.Empty, null);
+            DataTable dt = ri.getReserveItem(reserveID);
+            foreach (DataRow item in dt.Rows)
+            {
+                string fruitType = item["fruitType"].ToString();
+                string fruitSeed = item["fruitSeed"].ToString();
+                string grade = item["grade"].ToString();
+                int amount = int.Parse(item["quantity"].ToString());
+                ri.updateStock(fruitType,fruitSeed,grade,amount);
+            }
             ro.updateSellStatus(reserveID);
             Response.Redirect("Home.aspx");
         }

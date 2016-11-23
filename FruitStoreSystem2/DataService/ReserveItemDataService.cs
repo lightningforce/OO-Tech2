@@ -52,5 +52,19 @@ namespace FruitStoreSystem2
                 cmd.ExecuteNonQuery();
             }
         }
+        public void updateStockData(string fruitType,string fruitSeed,string grade,int amount)
+        {
+            using (DataAccess dac = new DataAccess())
+            {
+                dac.Open(Provider.MSSQL);
+                DbCommand cmd = dac.CreateCommand("usp_UpdateStock");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(dac.CreateParameter("@in_fruitType", fruitType));
+                cmd.Parameters.Add(dac.CreateParameter("@in_fruitSeed", fruitSeed));
+                cmd.Parameters.Add(dac.CreateParameter("@in_grade", grade));
+                cmd.Parameters.Add(dac.CreateParameter("@in_amount", amount));
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }

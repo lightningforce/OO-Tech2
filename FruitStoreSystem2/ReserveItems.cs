@@ -32,5 +32,10 @@ namespace FruitStoreSystem2
             ReserveItemDataService ri = new ReserveItemDataService();
             ri.insertReserveItemData(reserveID, quantity, fruitType, fruitSeed, grade);
         }
+        public void updateStock(string fruitType,string fruitSeed,string grade,int amount)
+        {
+            ReserveItemDataService ri = new ReserveItemDataService();
+            ri.updateStockData(fruitType,fruitSeed,grade,amount);
+        }
     }
 }

@@ -25,13 +25,13 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="#">ระบบขายผลไม้</a>
+                            <a class="navbar-brand" href="home.aspx">ร้านโชคประเสริฐ</a>
                         </div>
 
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav">
-                                <li><a href="home.aspx">รายการจองผลไม้ <span class="sr-only">(current)</span></a></li>
+                                <li><a href="home.aspx">รายการจอง/ขายผลไม้ <span class="sr-only">(current)</span></a></li>
                                 <li><a href="addReservingOrder.aspx">เพิ่มรายการจองผลไม้</a></li>
                                 <li><a href="stock.aspx">STOCK ผลไม้</a></li>
                             </ul>                                          

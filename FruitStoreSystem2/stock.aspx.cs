@@ -100,6 +100,7 @@ namespace FruitStoreSystem2
             Fruit f = new Fruit(string.Empty, string.Empty, null);
             showUncatStock.DataSource = f.getUncatTable();
             showUncatStock.DataBind();
+            TextBox1.Text = "0";
         }
         private void Insert(string fruitType, string fruitSeed, int amount)
         {
@@ -130,6 +131,9 @@ namespace FruitStoreSystem2
             showUncatStock.DataSource = f.getUncatTable();
             showGradedStock.DataBind();
             showUncatStock.DataBind();
+            TextBox2.Text = "0";
+            TextBox3.Text = "0";
+            TextBox4.Text = "0";
         }
         private void UpdateStock(string fruitType, string fruitSeed, int amount_a, int amount_b, int amount_c)
         {

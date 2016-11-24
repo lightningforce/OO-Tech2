@@ -92,7 +92,7 @@ namespace FruitStoreSystem2
             strQuery.Append("r.reserveID");
             strQuery.Append(",c.cusFName + ' ' + c.cusLName as cus_fullname");
             strQuery.Append(",r.reserveDate");
-            strQuery.Append(",r.receiveDate");
+            strQuery.Append(",r.sellDate");
             strQuery.Append(",r.status ");
             strQuery.Append("from ReserveOrder r ");
             strQuery.Append("inner join Customer c ");

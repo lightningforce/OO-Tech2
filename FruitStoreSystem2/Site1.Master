@@ -45,7 +45,7 @@
             </asp:ContentPlaceHolder>
         </div>
     </form>
-    <footer class="black jumbotron navbar-fixed-bottom footer hidden-lg">
+    <footer class="black jumbotron navbar-fixed-bottom footer">
         <div class="container">
            <span> Code Licensed Chulalongkorn University (CU), Bangkok, Thailand</span>
            <span class="pull-right"> copyright <span class="glyphicon glyphicon-copyright-mark"></span> BSD #14</span>
